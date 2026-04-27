@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio | [Your Name]</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --glass-blur: blur(8px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Animations --- */
+        @keyframes glassFade {
+            from { opacity: 0; filter: blur(15px); transform: translateY(20px); }
+            to { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: var(--glass-blur);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav .logo { font-weight: 800; font-size: 1.2rem; color: var(--accent); }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 10%;
+            animation: glassFade 1.2s ease-out forwards;
+        }
+
+        header h1 { font-size: 4rem; margin-bottom: 1rem; }
+        header p { font-size: 1.5rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2rem; }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 0 0 rgba(59, 130, 246, 0);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        /* --- Sections --- */
+        section { padding: 100px 10%; }
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; position: relative; }
+        h2::after { content: ''; display: block; width: 50px; height: 4px; background: var(--accent); margin-top: 10px; }
+
+        /* Expertise Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover { border-color: var(--accent); }
+
+        /* Project Cards */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .project-card img { width: 100%; height: 200px; background: #334155; object-fit: cover; }
+        .project-info { padding: 1.5rem; }
+        .project-card:hover { transform: scale(1.02); }
+
+        footer { text-align: center; padding: 50px; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PORTFOLIO.</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#expertise">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <p>Hi, I am [Your Name]</p>
+        <h1>Strategic Problem Solver & Creative Developer.</h1>
+        <p>I build high-performance digital experiences that bridge the gap between complex logic and elegant design.</p>
+        <a href="#projects" class="btn">View My Work</a>
+    </header>
+
+    <section id="about" class="reveal">
+        <h2>About Me</h2>
+        <p style="max-width: 800px; font-size: 1.1rem; color: var(--text-muted);">
+            Dedicated professional with over [X] years of experience in the [Your Industry] sector. I specialize in turning ambiguous requirements into streamlined solutions. My approach combines technical precision with a deep understanding of user-centric design principles. Currently looking for new opportunities to drive innovation at [Company Name/Industry].
+        </p>
+    </section>
+
+    <section id="expertise" class="reveal">
+        <h2>Expertise</h2>
+        <div class="grid">
+            <div class="skill-card">
+                <h3>Technical Strategy</h3>
+                <p>Architecting scalable solutions with a focus on long-term sustainability.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Modern Web Development</h3>
+                <p>Crafting responsive, high-performance interfaces using modern standards.</p>
+            </div>
+            <div class="skill-card">
+                <h3>System Optimization</h3>
+                <p>Refining existing workflows to increase speed and reduce operational overhead.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="reveal">Featured Projects</h2>
+        <div class="project-grid">
+            <div class="project-card reveal">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzMzQxNTUiLz48L3N2Zz4=" alt="Project Phoenix">
+                <div class="project-info">
+                    <h3>Project Phoenix</h3>
+                    <p>A complete digital transformation of legacy systems resulting in a 40% efficiency boost.</p>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzMzQxNTUiLz48L3N2Zz4=" alt="Project Cobalt">
+                <div class="project-info">
+                    <h3>Project Cobalt</h3>
+                    <p>Development of a proprietary analytical engine for real-time data visualization.</p>
+                </div>
+            </div>
+            <div class="project-card reveal">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzMzQxNTUiLz48L3N2Zz4=" alt="Project Nexus">
+                <div class="project-info">
+                    <h3>Project Nexus</h3>
+                    <p>A cross-platform application designed to streamline internal communication.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal" style="text-align: center;">
+        <h2>Let's Connect</h2>
+        <p style="margin-bottom: 2rem;">Interested in working together or just want to grab a virtual coffee?</p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="mailto:your.email@example.com" class="btn">Send Email</a>
+            <a href="#" class="btn" style="background: transparent; border: 1px solid var(--accent);">Download CV</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 [Your Name]. Built with precision and pizzazz.</p>
+    </footer>
+
+    <script>
+        // Staggered Scroll Reveal Logic
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Slight delay for staggered effect
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, index * 100); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
