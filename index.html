@@ -3,47 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asia Bragg | Accounting & IT Professional</title>
+    <title>Asia Bragg | Portfolio</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
+            --bg-color: #020617;
+            --card-bg: rgba(30, 41, 59, 0.7);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --accent: #3b82f6; /* Electric Blue */
-            --glass-blur: blur(8px);
+            --accent: #3b82f6; 
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- Animations --- */
-        @keyframes glassFade {
-            from { opacity: 0; filter: blur(15px); transform: translateY(20px); }
-            to { opacity: 1; filter: blur(0); transform: translateY(0); }
+        /* --- Animated Background Pizzazz --- */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.05) 0%, transparent 40%);
+            animation: pulse 15s infinite alternate;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* --- Entrance Animations --- */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.2, 1);
         }
 
         .reveal.active {
@@ -54,132 +61,137 @@
         /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: var(--glass-blur);
+            top: 0; width: 100%; padding: 1.5rem 10%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(2, 6, 23, 0.7);
+            backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--glass-border);
         }
 
-        nav .logo { font-weight: 800; font-size: 1.2rem; color: var(--accent); letter-spacing: 1px; }
+        nav .logo { font-weight: 800; color: var(--accent); letter-spacing: 2px; }
         nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--accent); }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
 
         /* --- Hero Section --- */
         header {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            animation: glassFade 1.2s ease-out forwards;
+            display: flex; align-items: center; padding: 0 10%;
         }
 
         .hero-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            gap: 4rem;
+            display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4rem;
         }
 
-        .hero-content { flex: 2; }
-        header h1 { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1.1; }
-        header p.lead { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2rem; }
+        .hero-content { flex: 2; animation: slideUpFade 1s ease-out forwards; }
+        header h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 1.1; font-weight: 900; }
+        header .lead { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; border-left: 3px solid var(--accent); padding-left: 1.5rem; }
 
-        .hero-image-wrapper {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+        /* --- Profile Image with Pizzazz --- */
+        .profile-img-container {
             position: relative;
+            flex: 1;
+            display: flex; justify-content: center;
+            animation: slideUpFade 1.2s ease-out forwards;
         }
 
         .profile-img {
-            width: 220px;
-            height: 220px;
+            width: 240px; height: 240px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
-            animation: float 6s ease-in-out infinite;
+            border: 2px solid var(--glass-border);
+            padding: 10px;
+            background: linear-gradient(45deg, var(--accent), transparent);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 30px 60px var(--accent-glow);
+        }
+
+        /* --- Glass Cards --- */
+        section { padding: 100px 10%; }
+        h2 { font-size: 2.2rem; margin-bottom: 3rem; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+        .glass-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(5px);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(30, 41, 59, 0.9);
+            border-color: var(--accent);
+        }
+
+        .glass-card:hover::before { left: 100%; }
+
+        .tag {
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: inline-block;
         }
 
         .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
             background: var(--accent);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
             transition: 0.3s;
-            margin-right: 10px;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--accent);
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 25px var(--accent-glow);
         }
 
-        /* --- Content Sections --- */
-        section { padding: 80px 10%; }
-        h2 { font-size: 2rem; margin-bottom: 2rem; }
-        h2::after { content: ''; display: block; width: 40px; height: 3px; background: var(--accent); margin-top: 8px; }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            margin-left: 1rem;
         }
 
-        .card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+        .btn-ghost:hover { background: var(--glass-border); }
 
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .card h3 { color: var(--accent); margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .card p { font-size: 0.95rem; color: var(--text-muted); }
-
-        .tag {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); font-size: 0.9rem; }
-
-        /* Mobile Adjustments */
         @media (max-width: 968px) {
-            .hero-container { flex-direction: column-reverse; text-align: center; padding-top: 120px; }
-            header h1 { font-size: 2.5rem; }
-            .profile-img { width: 160px; height: 160px; }
+            .hero-container { flex-direction: column-reverse; text-align: center; }
+            .profile-img { width: 180px; height: 180px; }
             nav ul { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <div class="bg-glow"></div>
+
     <nav>
-        <div class="logo">ASIA BRAGG</div>
+        <div class="logo">A.BRAGG</div>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
@@ -191,71 +203,73 @@
     <header>
         <div class="hero-container">
             <div class="hero-content">
-                <p style="color: var(--accent); font-weight: 600; letter-spacing: 2px; margin-bottom: 0.5rem;">FUTURE ACCOUNTING PROFESSIONAL</p>
-                <h1>Bridging Financial Accuracy with Technical Innovation.</h1>
-                <p class="lead">Rutgers University Honors student combining a background in Accounting with hands-on Technical Support experience.</p>
+                <span class="tag" style="background: var(--accent-glow); color: var(--accent);">RUTGERS UNIVERSITY '27</span>
+                <h1>Asia Bragg [cite: 1]</h1>
+                <p class="lead">Bachelors of Science in Accounting student [cite: 8] at Rutgers University, bridging the gap between financial tracking [cite: 32] and technical support[cite: 23].</p>
                 <div style="margin-top: 2rem;">
-                    <a href="https://www.linkedin.com/in/asia-bragg" target="_blank" class="btn">LinkedIn</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    <a href="https://www.linkedin.com/in/asialbragg" class="btn">LinkedIn Profile</a>
+                    <a href="#experience" class="btn btn-ghost">View Experience</a>
                 </div>
             </div>
-            <div class="hero-image-wrapper">
-                <img src="assets/profilepic.jpeg" alt="Asia Bragg" class="profile-img" onerror="this.src='https://via.placeholder.com/220?text=AB'">
+            <div class="profile-img-container">
+                <img src="assets/profilepic.jpeg" alt="Asia Bragg" class="profile-img" onerror="this.src='https://via.placeholder.com/240'">
             </div>
         </div>
     </header>
 
     <section id="about" class="reveal">
-        <h2>Goals & Aspirations</h2>
-        <p style="max-width: 850px; font-size: 1.1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
-            As a First-Generation college student at Rutgers University [cite: 8, 47], my goal is to leverage my analytical skills to drive business growth and ensure financial integrity. [cite: 5, 42] With a professional background spanning IT technical support and accounting simulations, I aspire to become a CPA who understands the intersection of data, technology, and fiscal responsibility. [cite: 21, 38, 42]
-        </p>
-        <div class="tag">Problem Solving</div> <div class="tag">Customer Success</div> <div class="tag">Financial Data Analysis</div>
-    </section>
-
-    <section id="education" class="reveal">
-        <h2>Education</h2>
-        <div class="card">
-            <span class="tag">Class of 2027</span>
-            <h3>Rutgers University, New Brunswick</h3>
-            <p><strong>Bachelor of Science in Accounting</strong></p>
-            <p>Active member of the Rutgers University Accounting Association. [cite: 8, 37]</p>
+        <h2>Professional Summary</h2>
+        <div class="glass-card">
+            <p style="font-size: 1.2rem; color: var(--text-muted);">
+                "Demonstrates powerful work ethic and seeks to better businesses and customer's experiences through newer skills." [cite: 5] 
+                I combine strong communication [cite: 28] with a background in data maintenance [cite: 31] and technical troubleshooting[cite: 24].
+            </p>
         </div>
     </section>
 
     <section id="experience" class="reveal">
-        <h2>Key Experience</h2>
+        <h2>Experience</h2>
         <div class="grid">
-            <div class="card">
-                <h3>OIT Level 1 Consultant</h3>
-                <p><strong>Rutgers University</strong></p>
-                <p>Providing front-line technical support for 20+ computer labs, diagnosing hardware and network issues on Windows and macOS. [cite: 21, 23, 24]</p>
+            <div class="glass-card">
+                <span class="tag">Present</span>
+                <h3>OIT Level 1 Consultant [cite: 21]</h3>
+                <p><strong>Rutgers University [cite: 21]</strong></p>
+                <ul style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <li>Diagnosed hardware & network issues [cite: 24]</li>
+                    <li>Technical support for 20+ computer labs [cite: 23]</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Admin Assistant Intern</h3>
-                <p><strong>Aurora's Kitchens & Interiors</strong></p>
-                <p>Managed financial tracking through credit card receipts and processed vendor invoices to ensure payroll accuracy. [cite: 29, 32, 34]</p>
+            <div class="glass-card">
+                <span class="tag">2025</span>
+                <h3>Admin Intern [cite: 29]</h3>
+                <p><strong>Aurora's Kitchens [cite: 29]</strong></p>
+                <ul style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <li>Financial tracking & invoice entry [cite: 32, 34]</li>
+                    <li>Payroll accuracy management [cite: 34]</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Accounting Simulation</h3>
-                <p><strong>Koch Industries (Forage)</strong></p>
-                <p>Analyzed financial data sets and developed internal memos to assist senior leadership with financial inquiries. [cite: 40, 42]</p>
+            <div class="glass-card">
+                <span class="tag">Sim</span>
+                <h3>Accounting Associate [cite: 42]</h3>
+                <p><strong>Koch Industries [cite: 40]</strong></p>
+                <ul style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
+                    <li>Analyzed financial data sets [cite: 42]</li>
+                    <li>Articulated findings to leadership [cite: 42]</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section id="contact" class="reveal" style="text-align: center;">
-        <h2>Get In Touch</h2>
-        <p style="margin-bottom: 2rem;">I am currently seeking opportunities to grow within the Accounting and Finance space.</p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <div class="glass-card" style="max-width: 600px; margin: 0 auto;">
+            <h2>Let's Work Together</h2>
+            <p style="margin-bottom: 2rem;">South Bound Brook, NJ [cite: 2] | (732) 507-2863 [cite: 3]</p>
             <a href="mailto:asialbragg@gmail.com" class="btn">Email Me</a>
-            <a href="https://www.linkedin.com/in/asia-bragg" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
         </div>
-        <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted);">Located in South Bound Brook, NJ [cite: 2]</p>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Asia Bragg. Designed for Professional Excellence.</p>
+    <footer style="padding: 50px; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-muted);">
+        <p>© 2026 Asia Bragg. Built for Professional Impact.</p>
     </footer>
 
     <script>
