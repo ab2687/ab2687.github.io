@@ -3,21 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asia Bragg | Accounting & IT Portfolio</title>
+    <title>Asia Bragg | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #030712;
-            --primary: #8b5cf6; /* Violet */
-            --secondary: #ec4899; /* Pink */
-            --tertiary: #06b6d4; /* Cyan */
-            --success: #10b981; /* Emerald */
+            --primary: #8b5cf6; 
+            --secondary: #ec4899; 
+            --tertiary: #06b6d4; 
             --text-main: #ffffff;
             --text-muted: #94a3b8;
             --glass: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+
+        h1, h2, h3, .logo, .btn {
+            font-family: 'Outfit', sans-serif;
+        }
 
         body {
             background-color: var(--bg-color);
@@ -26,43 +33,42 @@
             min-height: 100vh;
         }
 
-        /* --- Animated Colorful Background --- */
+        /* --- Animated Background --- */
         .gradient-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 10% 10%, rgba(139, 92, 246, 0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 90%, rgba(236, 72, 153, 0.2) 0%, transparent 40%),
-                        radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 85% 85%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
             animation: bgShift 15s infinite alternate ease-in-out;
         }
 
         @keyframes bgShift {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.2) rotate(5deg); }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
 
         /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 0; width: 100%; padding: 1.5rem 10%;
+            top: 0; width: 100%; padding: 1.2rem 10%;
             display: flex; justify-content: space-between; align-items: center;
-            background: rgba(3, 7, 18, 0.85);
+            background: rgba(3, 7, 18, 0.8);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--glass-border);
         }
 
         nav .logo { 
-            font-weight: 900; font-size: 1.6rem; letter-spacing: -1px;
+            font-weight: 900; font-size: 1.4rem; letter-spacing: -0.5px;
             background: linear-gradient(to right, var(--primary), var(--tertiary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: var(--text-main); text-decoration: none; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--secondary); }
 
         /* --- Hero Section --- */
         header {
@@ -74,33 +80,38 @@
             display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4rem;
         }
 
-        .hero-content { flex: 1.5; }
+        .hero-content { flex: 1.8; }
         
         .hero-content h1 { 
-            font-size: clamp(3.5rem, 8vw, 5.5rem); 
-            line-height: 0.9; margin-bottom: 1.5rem; font-weight: 900;
-            background: linear-gradient(to right, #fff, var(--primary), var(--secondary), var(--tertiary));
-            background-size: 300% auto;
+            font-size: clamp(3rem, 7vw, 5rem); 
+            line-height: 1; margin-bottom: 1.5rem; font-weight: 900;
+            background: linear-gradient(to right, #fff 30%, var(--primary), var(--secondary));
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: textFlow 6s linear infinite;
+            animation: textFlow 8s linear infinite;
         }
 
-        @keyframes textFlow { to { background-position: 300% center; } }
+        @keyframes textFlow { to { background-position: 200% center; } }
 
         .lead { 
-            font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; 
-            max-width: 650px; line-height: 1.6; border-left: 5px solid var(--primary); padding-left: 1.5rem;
+            font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; 
+            max-width: 600px; line-height: 1.6;
         }
 
-        /* --- Profile Image Shape --- */
-        .profile-blob {
+        /* --- Smaller Refined Profile Image --- */
+        .profile-wrapper {
+            flex: 1; display: flex; justify-content: center;
+        }
+
+        .profile-frame {
             position: relative;
-            width: 300px; height: 300px;
+            width: 200px; height: 200px; /* Smaller Size */
+            padding: 5px;
             background: linear-gradient(45deg, var(--primary), var(--tertiary));
-            padding: 6px;
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            animation: morph 8s ease-in-out infinite alternate, float 6s ease-in-out infinite;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 7s ease-in-out infinite alternate, float 5s ease-in-out infinite;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .profile-img {
@@ -111,82 +122,73 @@
         }
 
         @keyframes morph {
-            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            100% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            100% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-25px); }
+            50% { transform: translateY(-15px); }
         }
 
-        /* --- Skill Badges --- */
-        .skills-container {
-            display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem;
+        /* --- Skill Pills --- */
+        .skills-grid {
+            display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem;
         }
 
-        .skill-badge {
+        .pill {
             background: var(--glass);
             border: 1px solid var(--glass-border);
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
             font-weight: 600;
+            color: #ddd;
+            transition: 0.3s;
+        }
+
+        .pill:hover {
+            border-color: var(--primary);
             color: #fff;
+            background: rgba(139, 92, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* --- Sections --- */
+        section { padding: 100px 10%; }
+        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2.5rem; letter-spacing: -0.5px; }
+        
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .card {
+            background: var(--glass);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
             transition: 0.4s;
         }
 
-        .skill-badge:hover {
-            background: var(--primary);
-            border-color: var(--primary);
-            box-shadow: 0 0 15px var(--primary);
-            transform: scale(1.1);
-        }
-
-        .skill-badge.tech { border-color: var(--tertiary); color: var(--tertiary); }
-        .skill-badge.tech:hover { background: var(--tertiary); color: #fff; }
-
-        /* --- Cards Section --- */
-        section { padding: 120px 10%; }
-        h2 { font-size: 3rem; font-weight: 900; margin-bottom: 3rem; position: relative; }
-        
-        .reveal { opacity: 0; transform: translateY(40px); transition: 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
-
-        .pizzazz-card {
-            background: var(--glass);
-            padding: 3rem;
-            border-radius: 30px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-        }
-
-        .pizzazz-card:hover {
-            transform: translateY(-15px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--secondary);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 20px rgba(236, 72, 153, 0.2);
+        .card:hover {
+            border-color: var(--tertiary);
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.06);
         }
 
         .btn {
-            padding: 1.2rem 3rem;
+            padding: 1rem 2.5rem;
             background: linear-gradient(45deg, var(--primary), var(--tertiary));
-            color: white; font-weight: 800; border-radius: 15px;
+            color: white; font-weight: 700; border-radius: 10px;
             text-decoration: none; display: inline-block;
-            transition: 0.3s; box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+            transition: 0.3s;
         }
 
-        .btn:hover { transform: scale(1.1); box-shadow: 0 15px 30px rgba(6, 182, 212, 0.5); }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4); }
 
-        @media (max-width: 1100px) {
-            .hero-container { flex-direction: column-reverse; text-align: center; padding-top: 100px; }
-            .profile-blob { width: 220px; height: 220px; }
-            .lead { margin-left: auto; margin-right: auto; border-left: none; border-bottom: 3px solid var(--primary); padding: 0 0 1rem 0; }
-            .skills-container { justify-content: center; }
+        @media (max-width: 968px) {
+            .hero-container { flex-direction: column-reverse; text-align: center; }
+            .profile-frame { width: 160px; height: 160px; }
             nav ul { display: none; }
         }
     </style>
@@ -196,10 +198,9 @@
     <div class="gradient-bg"></div>
 
     <nav>
-        <div class="logo">ASIA BRAGG</div>
+        <div class="logo">A.BRAGG</div>
         <ul>
-            <li><a href="#about">Bio</a></li>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#experience">History</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -209,88 +210,74 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Asia Bragg</h1>
-                <p class="lead">Bachelors of Science in Accounting student at Rutgers University. Combining meticulous financial analysis with advanced IT troubleshooting skills.</p>
+                <p class="lead">Rutgers University Accounting student bridging the gap between rigorous financial logic and high-level technical support.</p>
                 
-                <div class="skills-container">
-                    <div class="skill-badge">Intermediate Accounting I & II</div>
-                    <div class="skill-badge">Accounting Information Systems</div>
-                    <div class="skill-badge">Managerial Accounting</div>
-                    <div class="skill-badge">Cost Accounting</div>
-                    <div class="skill-badge tech">Microsoft Excel (Advanced)</div>
-                    <div class="skill-badge tech">Microsoft Access</div>
-                    <div class="skill-badge tech">Technical Support</div>
-                    <div class="skill-badge">Customer Service</div>
+                <div class="skills-grid">
+                    <div class="pill">Intermediate Accounting I & II</div>
+                    <div class="pill">Accounting Info Systems</div>
+                    <div class="pill">Cost Accounting</div>
+                    <div class="pill">Managerial Accounting</div>
+                    <div class="pill">Advanced Excel</div>
+                    <div class="pill">MS Access</div>
+                    <div class="pill">IT Troubleshooting</div>
+                    <div class="pill">Customer Excellence</div>
                 </div>
 
-                <div style="margin-top: 3rem;">
-                    <a href="https://www.linkedin.com/in/asia-bragg" target="_blank" class="btn">Connect on LinkedIn</a>
+                <div style="margin-top: 2.5rem;">
+                    <a href="https://www.linkedin.com/in/asia-bragg" target="_blank" class="btn">View LinkedIn</a>
                 </div>
             </div>
-            <div class="profile-blob">
-                <img src="assets/profilepic.jpeg" alt="Asia Bragg" class="profile-img" onerror="this.src='https://via.placeholder.com/300/8b5cf6/ffffff?text=AB'">
+            <div class="profile-wrapper">
+                <div class="profile-frame">
+                    <img src="assets/profilepic.jpeg" alt="Asia Bragg" class="profile-img" onerror="this.src='https://via.placeholder.com/200/8b5cf6/ffffff?text=AB'">
+                </div>
             </div>
         </div>
     </header>
 
     <section id="about" class="reveal">
-        <h2>Professional Profile</h2>
-        <div class="pizzazz-card">
-            <p style="font-size: 1.3rem; line-height: 1.8; color: var(--text-muted);">
-                I am a dedicated Honors student at <strong>Rutgers University - New Brunswick</strong>, expecting to graduate in May 2027. My unique background allows me to bridge the gap between complex financial reporting and technical system operations. Whether I am managing payroll accuracy, auditing financial datasets, or diagnosing hardware issues in high-traffic computer labs, I prioritize precision, communication, and efficiency.
+        <h2>Professional Bio</h2>
+        <div class="card">
+            <p style="font-size: 1.2rem; line-height: 1.7; color: var(--text-muted);">
+                I am a focused Bachelors of Science in Accounting student at <strong>Rutgers University</strong> (May 2027). My background is built on a "work ethic first" philosophy—whether I'm auditing financial data sets in simulations for <strong>Koch Industries</strong> or ensuring 20+ computer labs run smoothly as an <strong>IT Consultant</strong>. I thrive in environments that require both analytical precision and clear communication.
             </p>
         </div>
     </section>
 
     <section id="experience" class="reveal">
-        <h2>Career Highlights</h2>
-        <div class="grid">
-            <div class="pizzazz-card">
-                <span style="color: var(--tertiary); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Technical Operations</span>
-                <h3 style="margin: 1rem 0; font-size: 1.5rem;">OIT Level 1 Consultant</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Rutgers University - New Brunswick</p>
-                <ul style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem; list-style-position: inside;">
-                    <li>Support for 20+ computer labs and print stations</li>
-                    <li>Hardware/Software diagnostics (Windows & macOS)</li>
-                    <li>Explaining complex technical concepts to users</li>
-                </ul>
+        <h2 style="text-align: center;">Core Experience</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <div class="card">
+                <h3 style="color: var(--tertiary); margin-bottom: 0.5rem;">IT Level 1 Consultant</h3>
+                <p style="font-weight: bold; margin-bottom: 1rem;">Rutgers OIT</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Resolving hardware/software issues across Windows and macOS while maintaining network stability for university labs.</p>
             </div>
-            <div class="pizzazz-card">
-                <span style="color: var(--secondary); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Financial Analysis</span>
-                <h3 style="margin: 1rem 0; font-size: 1.5rem;">Accounting Associate Sim</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Koch Industries (Forage)</p>
-                <ul style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem; list-style-position: inside;">
-                    <li>Analyzed complex financial data sets</li>
-                    <li>Developed internal memos for VP of Consumer Products</li>
-                    <li>Articulated findings to senior leadership</li>
-                </ul>
+            <div class="card">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Accounting Associate Sim</h3>
+                <p style="font-weight: bold; margin-bottom: 1rem;">Koch Industries</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Analyzing financial data and developing high-level internal memos for executive leadership.</p>
             </div>
-            <div class="pizzazz-card">
-                <span style="color: var(--primary); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Administration</span>
-                <h3 style="margin: 1rem 0; font-size: 1.5rem;">Admin Assistant Intern</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Aurora's Kitchens & Interiors</p>
-                <ul style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem; list-style-position: inside;">
-                    <li>Maintained product selection templates</li>
-                    <li>Processed vendor invoices & payroll hours</li>
-                    <li>Ensured accurate financial tracking via receipts</li>
-                </ul>
+            <div class="card">
+                <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Admin Assistant Intern</h3>
+                <p style="font-weight: bold; margin-bottom: 1rem;">Aurora's Kitchens</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Managing payroll accuracy, invoice processing, and financial tracking for high-end design projects.</p>
             </div>
         </div>
     </section>
 
     <section id="contact" class="reveal" style="text-align: center;">
-        <div class="pizzazz-card" style="max-width: 800px; margin: 0 auto; border-color: var(--tertiary);">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">Ready to Collaborate?</h2>
-            <p style="margin-bottom: 2.5rem; color: var(--text-muted);">Currently seeking internship opportunities in Accounting, Audit, and Financial Information Systems.</p>
-            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
-                <a href="mailto:asialbragg@gmail.com" class="btn">Send Email</a>
-                <a href="tel:7325072863" class="btn" style="background: transparent; border: 2px solid var(--tertiary);">Call Now</a>
+        <div class="card" style="max-width: 700px; margin: 0 auto; border-color: var(--primary);">
+            <h2>Let's Connect</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">Currently based in New Jersey. Seeking 2025/2026 Accounting & Finance internships.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="mailto:asialbragg@gmail.com" class="btn">Email Me</a>
+                <a href="tel:7325072863" class="btn" style="background: transparent; border: 2px solid var(--tertiary);">Call Office</a>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 60px; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-muted); font-size: 0.9rem;">
-        <p>© 2026 Asia Bragg | South Bound Brook, NJ</p>
-        <p style="margin-top: 0.5rem; color: var(--primary);">Designed with Excellence & Pizzazz</p>
+    <footer style="padding: 40px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+        <p>© 2026 Asia Bragg | Designed for Impact</p>
     </footer>
 
     <script>
