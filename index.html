@@ -37,7 +37,7 @@
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-12px); }
         }
 
         .reveal {
@@ -92,7 +92,7 @@
         header h1 { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1.1; }
         header p.lead { font-size: 1.4rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2rem; }
 
-        /* Profile Image Styles */
+        /* --- Refined Profile Image --- */
         .hero-image-wrapper {
             flex: 1;
             display: flex;
@@ -101,12 +101,12 @@
         }
 
         .profile-img {
-            width: 320px;
-            height: 320px;
+            width: 220px; /* Smaller, refined size */
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--accent);
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+            border: 3px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
             animation: float 6s ease-in-out infinite;
         }
 
@@ -142,6 +142,7 @@
             padding: 2rem;
             border-radius: 12px;
             transition: 0.3s;
+            border: 1px solid transparent;
         }
 
         .skill-card:hover { border: 1px solid var(--accent); }
@@ -166,9 +167,9 @@
 
         /* Mobile Adjustments */
         @media (max-width: 968px) {
-            .hero-container { flex-direction: column-reverse; text-align: center; padding-top: 100px; }
+            .hero-container { flex-direction: column-reverse; text-align: center; padding-top: 120px; gap: 2rem; }
             header h1 { font-size: 2.5rem; }
-            .profile-img { width: 220px; height: 220px; }
+            .profile-img { width: 160px; height: 160px; } /* Even smaller on mobile */
             nav ul { display: none; }
         }
     </style>
@@ -188,13 +189,13 @@
     <header>
         <div class="hero-container">
             <div class="hero-content">
-                <p style="color: var(--accent); font-weight: 600; letter-spacing: 2px;">HELLO, I AM [YOUR NAME]</p>
+                <p style="color: var(--accent); font-weight: 600; letter-spacing: 2px; margin-bottom: 0.5rem;">HELLO, I AM [YOUR NAME]</p>
                 <h1>Strategic Problem Solver & Creative Developer.</h1>
                 <p class="lead">I build high-performance digital experiences that bridge the gap between complex logic and elegant design.</p>
                 <a href="#projects" class="btn">Explore Work</a>
             </div>
             <div class="hero-image-wrapper">
-                <img src="assets/profilepic.jpeg" alt="Profile Picture" class="profile-img">
+                <img src="assets/profilepic.jpeg" alt="Profile Picture" class="profile-img" onerror="this.src='https://via.placeholder.com/220?text=Profile+Pic'">
             </div>
         </div>
     </header>
@@ -202,7 +203,7 @@
     <section id="about" class="reveal">
         <h2>About Me</h2>
         <p style="max-width: 800px; font-size: 1.1rem; color: var(--text-muted);">
-            Dedicated professional with a background in [Industry], focused on efficiency and creative problem-solving. I thrive at the intersection of logic and design, ensuring that every project is as functional as it is beautiful. I'm currently looking for new opportunities to help teams build impactful digital products.
+            Dedicated professional with a background in [Your Industry], focused on efficiency and creative problem-solving. I thrive at the intersection of logic and design, ensuring that every project is as functional as it is beautiful. I'm currently looking for new opportunities to help teams build impactful digital products.
         </p>
     </section>
 
@@ -211,15 +212,15 @@
         <div class="grid">
             <div class="skill-card">
                 <h3>Architecture</h3>
-                <p>Designing robust systems that scale with business growth.</p>
+                <p>Designing robust systems that scale with business growth and maintain long-term stability.</p>
             </div>
             <div class="skill-card">
                 <h3>UI/UX Design</h3>
-                <p>Creating intuitive interfaces that prioritize the user journey.</p>
+                <p>Creating intuitive, user-centric interfaces that prioritize seamless digital journeys.</p>
             </div>
             <div class="skill-card">
                 <h3>Optimization</h3>
-                <p>Refining codebases for maximum speed and performance.</p>
+                <p>Refining codebases and workflows for maximum speed, efficiency, and performance.</p>
             </div>
         </div>
     </section>
@@ -228,17 +229,17 @@
         <h2 class="reveal">Featured Projects</h2>
         <div class="project-grid">
             <div class="project-card reveal">
-                <div style="height: 200px; background: #334155;"></div>
+                <div style="height: 200px; background: #334155; display: flex; align-items: center; justify-content: center; color: #475569;">[Project Image]</div>
                 <div class="project-info">
                     <h3>Project Phoenix</h3>
-                    <p>A complete system overhaul resulting in 40% faster load times.</p>
+                    <p>A complete system overhaul resulting in 40% faster load times and improved UX.</p>
                 </div>
             </div>
             <div class="project-card reveal">
-                <div style="height: 200px; background: #334155;"></div>
+                <div style="height: 200px; background: #334155; display: flex; align-items: center; justify-content: center; color: #475569;">[Project Image]</div>
                 <div class="project-info">
                     <h3>Project Cobalt</h3>
-                    <p>Interactive dashboard for real-time data monitoring.</p>
+                    <p>Interactive dashboard for real-time data monitoring and predictive analysis.</p>
                 </div>
             </div>
         </div>
@@ -246,7 +247,7 @@
 
     <section id="contact" class="reveal" style="text-align: center;">
         <h2>Let's Connect</h2>
-        <p style="margin-bottom: 2rem;">Ready to start your next project?</p>
+        <p style="margin-bottom: 2rem;">Ready to start your next project or discuss a new opportunity?</p>
         <div style="display: flex; gap: 1rem; justify-content: center;">
             <a href="mailto:hello@example.com" class="btn">Send Email</a>
             <a href="#" class="btn" style="background: transparent; border: 1px solid var(--accent);">Download CV</a>
@@ -254,11 +255,11 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 [Your Name]. Built with precision.</p>
+        <p>&copy; 2026 [Your Name]. Built with precision and a touch of pizzazz.</p>
     </footer>
 
     <script>
-        // Scroll reveal logic
+        // Scroll reveal logic (Intersection Observer)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
