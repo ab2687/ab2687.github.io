@@ -35,6 +35,11 @@
             to { opacity: 1; filter: blur(0); transform: translateY(0); }
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -68,19 +73,45 @@
 
         /* --- Hero Section --- */
         header {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             padding: 0 10%;
             animation: glassFade 1.2s ease-out forwards;
         }
 
-        header h1 { font-size: 4rem; margin-bottom: 1rem; }
-        header p { font-size: 1.5rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2rem; }
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 4rem;
+        }
+
+        .hero-content { flex: 2; }
+        header h1 { font-size: 3.5rem; margin-bottom: 1rem; line-height: 1.1; }
+        header p.lead { font-size: 1.4rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2rem; }
+
+        /* Profile Image Styles */
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
 
         .btn {
+            display: inline-block;
             padding: 0.8rem 2rem;
             background: var(--accent);
             color: white;
@@ -88,7 +119,6 @@
             border-radius: 6px;
             font-weight: 600;
             transition: 0.3s;
-            box-shadow: 0 0 0 rgba(59, 130, 246, 0);
         }
 
         .btn:hover {
@@ -96,12 +126,11 @@
             box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
         }
 
-        /* --- Sections --- */
+        /* --- Content Sections --- */
         section { padding: 100px 10%; }
-        h2 { font-size: 2.5rem; margin-bottom: 3rem; position: relative; }
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; }
         h2::after { content: ''; display: block; width: 50px; height: 4px; background: var(--accent); margin-top: 10px; }
 
-        /* Expertise Grid */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -112,13 +141,11 @@
             background: var(--card-bg);
             padding: 2rem;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
             transition: 0.3s;
         }
 
-        .skill-card:hover { border-color: var(--accent); }
+        .skill-card:hover { border: 1px solid var(--accent); }
 
-        /* Project Cards */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -132,14 +159,16 @@
             transition: 0.4s;
         }
 
-        .project-card img { width: 100%; height: 200px; background: #334155; object-fit: cover; }
+        .project-card:hover { transform: scale(1.03); }
         .project-info { padding: 1.5rem; }
-        .project-card:hover { transform: scale(1.02); }
 
-        footer { text-align: center; padding: 50px; color: var(--text-muted); border-top: 1px solid rgba(255,255,255,0.05); }
+        footer { text-align: center; padding: 50px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--text-muted); }
 
-        @media (max-width: 768px) {
+        /* Mobile Adjustments */
+        @media (max-width: 968px) {
+            .hero-container { flex-direction: column-reverse; text-align: center; padding-top: 100px; }
             header h1 { font-size: 2.5rem; }
+            .profile-img { width: 220px; height: 220px; }
             nav ul { display: none; }
         }
     </style>
@@ -147,26 +176,33 @@
 <body>
 
     <nav>
-        <div class="logo">PORTFOLIO.</div>
+        <div class="logo">DEVELOPER.</div>
         <ul>
             <li><a href="#about">About</a></li>
-            <li><a href="#expertise">Skills</a></li>
+            <li><a href="#expertise">Expertise</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
     <header>
-        <p>Hi, I am [Your Name]</p>
-        <h1>Strategic Problem Solver & Creative Developer.</h1>
-        <p>I build high-performance digital experiences that bridge the gap between complex logic and elegant design.</p>
-        <a href="#projects" class="btn">View My Work</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <p style="color: var(--accent); font-weight: 600; letter-spacing: 2px;">HELLO, I AM [YOUR NAME]</p>
+                <h1>Strategic Problem Solver & Creative Developer.</h1>
+                <p class="lead">I build high-performance digital experiences that bridge the gap between complex logic and elegant design.</p>
+                <a href="#projects" class="btn">Explore Work</a>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="assets/profilepic.jpeg" alt="Profile Picture" class="profile-img">
+            </div>
+        </div>
     </header>
 
     <section id="about" class="reveal">
         <h2>About Me</h2>
         <p style="max-width: 800px; font-size: 1.1rem; color: var(--text-muted);">
-            Dedicated professional with over [X] years of experience in the [Your Industry] sector. I specialize in turning ambiguous requirements into streamlined solutions. My approach combines technical precision with a deep understanding of user-centric design principles. Currently looking for new opportunities to drive innovation at [Company Name/Industry].
+            Dedicated professional with a background in [Industry], focused on efficiency and creative problem-solving. I thrive at the intersection of logic and design, ensuring that every project is as functional as it is beautiful. I'm currently looking for new opportunities to help teams build impactful digital products.
         </p>
     </section>
 
@@ -174,16 +210,16 @@
         <h2>Expertise</h2>
         <div class="grid">
             <div class="skill-card">
-                <h3>Technical Strategy</h3>
-                <p>Architecting scalable solutions with a focus on long-term sustainability.</p>
+                <h3>Architecture</h3>
+                <p>Designing robust systems that scale with business growth.</p>
             </div>
             <div class="skill-card">
-                <h3>Modern Web Development</h3>
-                <p>Crafting responsive, high-performance interfaces using modern standards.</p>
+                <h3>UI/UX Design</h3>
+                <p>Creating intuitive interfaces that prioritize the user journey.</p>
             </div>
             <div class="skill-card">
-                <h3>System Optimization</h3>
-                <p>Refining existing workflows to increase speed and reduce operational overhead.</p>
+                <h3>Optimization</h3>
+                <p>Refining codebases for maximum speed and performance.</p>
             </div>
         </div>
     </section>
@@ -192,24 +228,17 @@
         <h2 class="reveal">Featured Projects</h2>
         <div class="project-grid">
             <div class="project-card reveal">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzMzQxNTUiLz48L3N2Zz4=" alt="Project Phoenix">
+                <div style="height: 200px; background: #334155;"></div>
                 <div class="project-info">
                     <h3>Project Phoenix</h3>
-                    <p>A complete digital transformation of legacy systems resulting in a 40% efficiency boost.</p>
+                    <p>A complete system overhaul resulting in 40% faster load times.</p>
                 </div>
             </div>
             <div class="project-card reveal">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzMzQxNTUiLz48L3N2Zz4=" alt="Project Cobalt">
+                <div style="height: 200px; background: #334155;"></div>
                 <div class="project-info">
                     <h3>Project Cobalt</h3>
-                    <p>Development of a proprietary analytical engine for real-time data visualization.</p>
-                </div>
-            </div>
-            <div class="project-card reveal">
-                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMzMzQxNTUiLz48L3N2Zz4=" alt="Project Nexus">
-                <div class="project-info">
-                    <h3>Project Nexus</h3>
-                    <p>A cross-platform application designed to streamline internal communication.</p>
+                    <p>Interactive dashboard for real-time data monitoring.</p>
                 </div>
             </div>
         </div>
@@ -217,37 +246,29 @@
 
     <section id="contact" class="reveal" style="text-align: center;">
         <h2>Let's Connect</h2>
-        <p style="margin-bottom: 2rem;">Interested in working together or just want to grab a virtual coffee?</p>
+        <p style="margin-bottom: 2rem;">Ready to start your next project?</p>
         <div style="display: flex; gap: 1rem; justify-content: center;">
-            <a href="mailto:your.email@example.com" class="btn">Send Email</a>
+            <a href="mailto:hello@example.com" class="btn">Send Email</a>
             <a href="#" class="btn" style="background: transparent; border: 1px solid var(--accent);">Download CV</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 [Your Name]. Built with precision and pizzazz.</p>
+        <p>&copy; 2026 [Your Name]. Built with precision.</p>
     </footer>
 
     <script>
-        // Staggered Scroll Reveal Logic
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        // Scroll reveal logic
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    // Slight delay for staggered effect
-                    setTimeout(() => {
-                        entry.target.classList.add('active');
-                    }, index * 100); 
+                    entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
+    
