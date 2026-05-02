@@ -176,6 +176,45 @@
             background: rgba(255,255,255,0.06);
         }
 
+        /* --- App Launcher Styles --- */
+        .app-launcher-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .app-icon-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            transition: 0.3s;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            width: 150px;
+        }
+
+        .app-icon-card:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .app-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px var(--primary));
+        }
+
+        .app-label {
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
         .btn {
             padding: 1rem 2.5rem;
             background: linear-gradient(45deg, var(--primary), var(--tertiary));
@@ -201,6 +240,7 @@
         <div class="logo">A.BRAGG</div>
         <ul>
             <li><a href="#about">About</a></li>
+            <li><a href="#software">Software</a></li>
             <li><a href="#experience">History</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -241,6 +281,18 @@
             <p style="font-size: 1.2rem; line-height: 1.7; color: var(--text-muted);">
                 I am a focused Bachelors of Science in Accounting student at <strong>Rutgers University</strong> (May 2027). My background is built on a "work ethic first" philosophy—whether I'm auditing financial data sets in simulations for <strong>Koch Industries</strong> or ensuring 20+ computer labs run smoothly as an <strong>IT Consultant</strong>. I thrive in environments that require both analytical precision and clear communication.
             </p>
+        </div>
+    </section>
+
+    <section id="software" class="reveal">
+        <h2 style="text-align: center;">Featured Software</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Interactive logic engine for tax and audit simulation.</p>
+        
+        <div class="app-launcher-container">
+            <a href="https://ab2687.github.io/" target="_blank" class="app-icon-card">
+                <div class="app-icon">🛡️</div>
+                <div class="app-label">AUDIT LAB</div>
+            </a>
         </div>
     </section>
 
