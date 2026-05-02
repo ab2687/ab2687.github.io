@@ -1,0 +1,277 @@
+/* --- Global Reset & Professional Fonts --- */
+:root {
+    --bg-dark: #020617;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-violet: #8b5cf6; /* Main Pizazz 💜 */
+    --accent-cyan: #06b6d4;   /* Spark 💎 */
+    --success-green: #10b981; /* Correct ✅ */
+    --error-red: #ef4444;    /* Audit Alert 🚨 */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Fantastical Background Glow --- */
+.glow-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.12) 0%, transparent 40%);
+}
+
+/* --- Navigation & Brand --- */
+nav {
+    padding: 1.5rem 5%;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    position: sticky;
+    top: 0; z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, var(--accent-violet), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.system-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--success-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 8px; height: 8px;
+    background-color: var(--success-green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--success-green);
+}
+
+/* --- Dashboard Grid --- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    padding: 3rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.glass-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(25px);
+    border-radius: 24px;
+    padding: 2.5rem;
+    height: 100%;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-5px);
+}
+
+.card-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Inputs & UI Controls --- */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+}
+
+.selector-row {
+    display: flex;
+    gap: 10px;
+}
+
+.spark-btn {
+    background: linear-gradient(45deg, var(--accent-violet), var(--accent-cyan));
+    border: none;
+    color: white;
+    padding: 0 1.5rem;
+    border-radius: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.spark-btn:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+/* --- Stats & Numbers --- */
+.stats-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.stat-box {
+    padding: 1.5rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+}
+
+.stat-box.highlight {
+    border-color: var(--accent-cyan);
+    background: rgba(6, 182, 212, 0.05);
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-top: 0.5rem;
+}
+
+/* --- Audit Terminal 📟 --- */
+.terminal-window {
+    background: #000;
+    border-radius: 16px;
+    height: 350px;
+    padding: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    overflow-y: auto;
+    border: 1px solid #222;
+    margin-top: 1rem;
+}
+
+.log-entry {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.system-msg { color: #555; }
+.log-success { color: var(--success-green); border-left: 3px solid var(--success-green); padding-left: 8px; }
+.log-error { color: var(--error-red); border-left: 3px solid var(--error-red); padding-left: 8px; }
+
+/* --- Footer & Misc --- */
+.action-footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.export-btn {
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.export-btn:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
+}
+
+.feedback-container {
+    margin-top: 1.5rem;
+    min-height: 80px;
+    border-radius: 12px;
+}
+
+footer {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* --- Shake Animation for Risks 🚨 --- */
+.shake {
+    animation: shakeEffect 0.4s ease-in-out;
+}
+
+@keyframes shakeEffect {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    75% { transform: translateX(8px); }
+}

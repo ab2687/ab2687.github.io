@@ -1,0 +1,64 @@
+{
+  "businessRules": {
+    "appName": "Bragg Tax Shield & Audit Lab 🛡️",
+    "selfEmploymentTax": 0.153,
+    "incomeTaxBracket": 0.12,
+    "systemStatus": "Operational 🟢"
+  },
+  "expenseLibrary": [
+    {
+      "id": "exp_001",
+      "name": "Professional Software 🛠️",
+      "category": "Operating Expense",
+      "isDeductible": true,
+      "riskLevel": "Low ✅",
+      "explanation": "Success! Subscription-based software (like Adobe or Microsoft 365) is a standard business deduction. ✨",
+      "knowledgeTip": "Accounting Fact: These are 'Period Costs'—they are recognized in the period they are paid! 🗓️"
+    },
+    {
+      "id": "exp_002",
+      "name": "Client Business Meal 🍱",
+      "category": "Meals & Entertainment",
+      "isDeductible": true,
+      "riskLevel": "Medium ⚠️",
+      "explanation": "Processed! Business meals are generally 50% deductible if a business discussion took place. 🤝",
+      "knowledgeTip": "Tax Law Tip: Always keep a digital record of the receipt and the business purpose of the meeting! 🧾"
+    },
+    {
+      "id": "exp_003",
+      "name": "Commute to Rutgers Lab 🚗",
+      "category": "Personal Travel",
+      "isDeductible": false,
+      "riskLevel": "High 🚨",
+      "explanation": "Audit Alert! Commuting between your home and your regular workplace is a personal expense, not a deduction. 🛑",
+      "knowledgeTip": "Managerial Logic: Only travel between two different work sites in the same day is typically deductible. 📉"
+    },
+    {
+      "id": "exp_004",
+      "name": "New MacBook Pro 💻",
+      "category": "Capital Asset",
+      "isDeductible": true,
+      "riskLevel": "Medium ⚠️",
+      "explanation": "Detected! Large hardware purchases are Capital Assets. They provide value for over a year! 🏗️",
+      "knowledgeTip": "AIS Logic: This should be capitalized and depreciated over its useful life (usually 5 years per MACRS). ⚖️"
+    },
+    {
+      "id": "exp_005",
+      "name": "Home Office Rent 🏠",
+      "category": "Operating Expense",
+      "isDeductible": true,
+      "riskLevel": "Medium ⚠️",
+      "explanation": "Verified! You can deduct the pro-rata portion of your home used EXCLUSIVELY for business. 📏",
+      "knowledgeTip": "Internal Control Tip: Be careful! The IRS scrutinizes this deduction heavily. Maintain a floor plan for your records! 🕵️‍♀️"
+    },
+    {
+      "id": "exp_006",
+      "name": "Gym Membership 🏋️‍♀️",
+      "category": "Personal Health",
+      "isDeductible": false,
+      "riskLevel": "High 🚨",
+      "explanation": "Audit Alert! While health is wealth, the IRS usually considers gym memberships a personal expense. ❌",
+      "knowledgeTip": "Auditor Logic: Personal expenses 'comingled' with business accounts are a major red flag in an audit! 🚩"
+    }
+  ]
+}
