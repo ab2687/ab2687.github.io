@@ -22,9 +22,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif; 
         }
 
-        h1, h2, h3, .logo, .btn {
-            font-family: 'Outfit', sans-serif;
-        }
+        h1, h2, h3, .logo, .btn { font-family: 'Outfit', sans-serif; }
 
         body {
             background-color: var(--bg-color);
@@ -33,22 +31,14 @@
             min-height: 100vh;
         }
 
-        /* --- Animated Background --- */
         .gradient-bg {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             background: radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
                         radial-gradient(circle at 85% 85%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
-            animation: bgShift 15s infinite alternate ease-in-out;
         }
 
-        @keyframes bgShift {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        /* --- Navigation --- */
         nav {
             position: fixed;
             top: 0; width: 100%; padding: 1.2rem 10%;
@@ -60,106 +50,38 @@
         }
 
         nav .logo { 
-            font-weight: 900; font-size: 1.4rem; letter-spacing: -0.5px;
+            font-weight: 900; font-size: 1.4rem;
             background: linear-gradient(to right, var(--primary), var(--tertiary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: var(--text-main); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: var(--secondary); }
+        nav a { color: var(--text-main); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; }
 
-        /* --- Hero Section --- */
-        header {
-            min-height: 100vh;
-            display: flex; align-items: center; padding: 0 10%;
-        }
-
-        .hero-container {
-            display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4rem;
-        }
-
-        .hero-content { flex: 1.8; }
+        header { min-height: 100vh; display: flex; align-items: center; padding: 0 10%; }
+        .hero-container { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4rem; }
         
         .hero-content h1 { 
             font-size: clamp(3rem, 7vw, 5rem); 
             line-height: 1; margin-bottom: 1.5rem; font-weight: 900;
-            background: linear-gradient(to right, #fff 30%, var(--primary), var(--secondary));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textFlow 8s linear infinite;
-        }
-
-        @keyframes textFlow { to { background-position: 200% center; } }
-
-        .lead { 
-            font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; 
-            max-width: 600px; line-height: 1.6;
-        }
-
-        /* --- Smaller Refined Profile Image --- */
-        .profile-wrapper {
-            flex: 1; display: flex; justify-content: center;
+            background: linear-gradient(to right, #fff, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .profile-frame {
-            position: relative;
             width: 200px; height: 200px;
-            padding: 5px;
             background: linear-gradient(45deg, var(--primary), var(--tertiary));
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            animation: morph 7s ease-in-out infinite alternate, float 5s ease-in-out infinite;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            padding: 5px;
         }
 
-        .profile-img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            border-radius: inherit;
-            background: var(--bg-color);
-        }
+        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; background: var(--bg-color); }
 
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            100% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-        }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+        .pill { background: var(--glass); border: 1px solid var(--glass-border); padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        /* --- Skill Pills --- */
-        .skills-grid {
-            display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem;
-        }
-
-        .pill {
-            background: var(--glass);
-            border: 1px solid var(--glass-border);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #ddd;
-            transition: 0.3s;
-        }
-
-        .pill:hover {
-            border-color: var(--primary);
-            color: #fff;
-            background: rgba(139, 92, 246, 0.1);
-            transform: translateY(-2px);
-        }
-
-        /* --- Sections --- */
         section { padding: 100px 10%; }
-        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2.5rem; letter-spacing: -0.5px; }
-        
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        h2 { font-size: 2.5rem; font-weight: 900; margin-bottom: 2.5rem; text-align: center; }
 
         .card {
             background: var(--glass);
@@ -167,20 +89,13 @@
             border-radius: 20px;
             border: 1px solid var(--glass-border);
             backdrop-filter: blur(10px);
-            transition: 0.4s;
         }
 
-        .card:hover {
-            border-color: var(--tertiary);
-            transform: translateY(-8px);
-            background: rgba(255,255,255,0.06);
-        }
-
-        /* --- App Launcher Styles --- */
+        /* --- THE CLEAN APP LAUNCHER --- */
         .app-launcher-container {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 2rem;
         }
 
         .app-icon-card {
@@ -188,46 +103,32 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            transition: 0.3s;
-            padding: 20px;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.02);
+            padding: 30px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            width: 150px;
+            width: 180px;
+            transition: 0.3s;
         }
 
         .app-icon-card:hover {
-            background: rgba(139, 92, 246, 0.1);
+            transform: translateY(-10px);
             border-color: var(--primary);
-            transform: scale(1.1);
+            background: rgba(139, 92, 246, 0.1);
         }
 
-        .app-icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px var(--primary));
-        }
-
-        .app-label {
-            color: var(--text-main);
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
+        .app-icon { font-size: 60px; margin-bottom: 15px; }
+        .app-label { color: white; font-weight: 800; font-size: 1rem; letter-spacing: 1px; }
 
         .btn {
             padding: 1rem 2.5rem;
             background: linear-gradient(45deg, var(--primary), var(--tertiary));
             color: white; font-weight: 700; border-radius: 10px;
             text-decoration: none; display: inline-block;
-            transition: 0.3s;
         }
-
-        .btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4); }
 
         @media (max-width: 968px) {
             .hero-container { flex-direction: column-reverse; text-align: center; }
-            .profile-frame { width: 160px; height: 160px; }
             nav ul { display: none; }
         }
     </style>
@@ -250,98 +151,57 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Asia Bragg</h1>
-                <p class="lead">Rutgers University Accounting student bridging the gap between rigorous financial logic and high-level technical support.</p>
-                
+                <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2rem;">Rutgers University Accounting student bridging financial logic with technical support.</p>
                 <div class="skills-grid">
-                    <div class="pill">Intermediate Accounting I & II</div>
+                    <div class="pill">Intermediate Accounting</div>
                     <div class="pill">Accounting Info Systems</div>
-                    <div class="pill">Cost Accounting</div>
-                    <div class="pill">Managerial Accounting</div>
-                    <div class="pill">Advanced Excel</div>
-                    <div class="pill">MS Access</div>
                     <div class="pill">IT Troubleshooting</div>
-                    <div class="pill">Customer Excellence</div>
                 </div>
-
                 <div style="margin-top: 2.5rem;">
                     <a href="https://www.linkedin.com/in/asia-bragg" target="_blank" class="btn">View LinkedIn</a>
                 </div>
             </div>
             <div class="profile-wrapper">
                 <div class="profile-frame">
-                    <img src="assets/profilepic.jpeg" alt="Asia Bragg" class="profile-img" onerror="this.src='https://via.placeholder.com/200/8b5cf6/ffffff?text=AB'">
+                    <img src="assets/profilepic.jpeg" alt="Asia" class="profile-img" onerror="this.src='https://via.placeholder.com/200'">
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="about" class="reveal">
+    <section id="about">
         <h2>Professional Bio</h2>
         <div class="card">
             <p style="font-size: 1.2rem; line-height: 1.7; color: var(--text-muted);">
-                I am a focused Bachelors of Science in Accounting student at <strong>Rutgers University</strong> (May 2027). My background is built on a "work ethic first" philosophy—whether I'm auditing financial data sets in simulations for <strong>Koch Industries</strong> or ensuring 20+ computer labs run smoothly as an <strong>IT Consultant</strong>. I thrive in environments that require both analytical precision and clear communication.
+                Focused Accounting student at <strong>Rutgers University</strong>. I bridge the gap between financial auditing and IT consulting, ensuring data integrity and hardware efficiency.
             </p>
         </div>
     </section>
 
-    <section id="software" class="reveal">
-        <h2 style="text-align: center;">Featured Software</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Interactive logic engine for tax and audit simulation.</p>
+    <section id="software">
+        <h2>Featured Software</h2>
+        <p style="text-align: center; color: var(--text-muted);">Click below to launch the Interactive Audit Lab in a new tab.</p>
         
         <div class="app-launcher-container">
-            <a href="https://ab2687.github.io/audit-lab/" target="_blank" class="app-icon-card">
+            <a href="audit-lab/index.html" target="_blank" class="app-icon-card">
                 <div class="app-icon">🛡️</div>
                 <div class="app-label">AUDIT LAB</div>
             </a>
         </div>
     </section>
 
-    <section id="experience" class="reveal">
-        <h2 style="text-align: center;">Core Experience</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
-            <div class="card">
-                <h3 style="color: var(--tertiary); margin-bottom: 0.5rem;">IT Level 1 Consultant</h3>
-                <p style="font-weight: bold; margin-bottom: 1rem;">Rutgers OIT</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Resolving hardware/software issues across Windows and macOS while maintaining network stability for university labs.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Accounting Associate Sim</h3>
-                <p style="font-weight: bold; margin-bottom: 1rem;">Koch Industries</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Analyzing financial data and developing high-level internal memos for executive leadership.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Admin Assistant Intern</h3>
-                <p style="font-weight: bold; margin-bottom: 1rem;">Aurora's Kitchens</p>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">Managing payroll accuracy, invoice processing, and financial tracking for high-end design projects.</p>
-            </div>
+    <section id="experience">
+        <h2>Core Experience</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div class="card"><h3>IT Consultant</h3><p>Rutgers OIT</p></div>
+            <div class="card"><h3>Accounting Sim</h3><p>Koch Industries</p></div>
+            <div class="card"><h3>Admin Intern</h3><p>Aurora's Kitchens</p></div>
         </div>
     </section>
 
-    <section id="contact" class="reveal" style="text-align: center;">
-        <div class="card" style="max-width: 700px; margin: 0 auto; border-color: var(--primary);">
-            <h2>Let's Connect</h2>
-            <p style="margin-bottom: 2rem; color: var(--text-muted);">Currently based in New Jersey. Seeking 2025/2026 Accounting & Finance internships.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="mailto:asialbragg@gmail.com" class="btn">Email Me</a>
-                <a href="tel:7325072863" class="btn" style="background: transparent; border: 2px solid var(--tertiary);">Call Office</a>
-            </div>
-        </div>
-    </section>
-
-    <footer style="padding: 40px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-        <p>© 2026 Asia Bragg | Designed for Impact</p>
+    <footer style="padding: 40px; text-align: center; color: var(--text-muted);">
+        <p>© 2026 Asia Bragg</p>
     </footer>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    </script>
 </body>
 </html>
