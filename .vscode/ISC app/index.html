@@ -3,94 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asia Bragg | Tax Shield & Audit Lab 🛡️✨</title>
-    
+    <title>Asia Bragg | Professional Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Professional styling for the embed section */
+        .app-showcase {
+            padding: 60px 5%;
+            background-color: #020617; /* Matches the app theme */
+            text-align: center;
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #8b5cf6; /* Violet accent from your app */
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+            background: #000;
+        }
+
+        /* Responsive height for the app window */
+        iframe {
+            width: 100%;
+            height: 850px;
+            border: none;
+            display: block;
+        }
+
+        .btn-fullscreen {
+            display: inline-block;
+            margin-top: 15px;
+            color: #06b6d4;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="glow-overlay"></div>
+    <section class="app-showcase">
+        <h2 style="font-family: 'Outfit'; font-size: 2.5rem;">Interactive Audit Lab 🛡️</h2>
+        <p>A custom-built AIS simulation focusing on tax liability and data integrity.</p>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo">BRAGG AUDIT SYSTEMS ⚖️</div>
-            <div class="system-status">
-                <span class="status-dot"></span> SYSTEM ACTIVE
+        <div class="iframe-container">
+            <iframe 
+                src="https://ab2687.github.io/" 
+                title="Bragg Tax Shield & Audit Lab"
+                loading="lazy">
+            </iframe>
             </div>
-        </div>
-    </nav>
 
-    <main class="dashboard-grid">
-        
-        <section class="card-container">
-            <div class="glass-card main-calc">
-                <div class="card-header">
-                    <h2>Tax Shield Engine 🛡️</h2>
-                    <p class="subtitle">Analyze liability & save on deductions.</p>
-                </div>
+        <a href="https://ab2687.github.io/" target="_blank" class="btn-fullscreen">
+            Launch in Full Screen Window ↗️
+        </a>
+    </section>
 
-                <div class="input-section">
-                    <div class="input-group">
-                        <label>Gross Annual Income ($) 💰</label>
-                        <input type="number" id="incomeInput" placeholder="e.g. 65000" oninput="recalculate()">
-                    </div>
-
-                    <div class="input-group">
-                        <label>Select Financial Event to Audit 🔍</label>
-                        <div class="selector-row">
-                            <select id="itemSelect">
-                                <option value="" disabled selected>Choose an expense...</option>
-                            </select>
-                            <button onclick="processEvent()" class="spark-btn">PROCESS ⚡</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="stats-display">
-                    <div class="stat-box">
-                        <span class="stat-label">Total Deductions</span>
-                        <div id="deductionTotal" class="stat-value">$0</div>
-                    </div>
-                    <div class="stat-box highlight">
-                        <span class="stat-label">Est. Tax Liability</span>
-                        <div id="taxOwed" class="stat-value">$0</div>
-                    </div>
-                </div>
-                
-                <div id="feedbackBox" class="feedback-container">
-                    </div>
-            </div>
-        </section>
-
-        <section class="card-container">
-            <div class="glass-card audit-terminal">
-                <div class="card-header">
-                    <h2>Immutable Audit Trail 📑</h2>
-                    <p class="subtitle">Real-time system logging & integrity.</p>
-                </div>
-
-                <div id="logTerminal" class="terminal-window">
-                    <div class="log-entry system-msg">[SYSTEM] Initializing audit protocols...</div>
-                    <div class="log-entry system-msg">[SYSTEM] Logic Engine Loaded (v1.0.2)...</div>
-                </div>
-
-                <div class="action-footer">
-                    <p class="disclaimer">⚠️ All entries are logged for compliance.</p>
-                    <button onclick="exportCSV()" class="export-btn">EXPORT LEDGER (CSV) 📥</button>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>© 2026 Asia Bragg | Designed for Financial Integrity & Data Accuracy</p>
-    </footer>
-
-    <script src="app.js"></script>
-</body>
+    </body>
 </html>
