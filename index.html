@@ -21,7 +21,6 @@
         h1, h2, h3, .logo, .btn { font-family: 'Outfit', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; min-height: 100vh; }
 
-        /* --- RESTORED: Animated Background --- */
         .gradient-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
@@ -42,7 +41,6 @@
         nav a { color: var(--text-main); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: var(--secondary); }
 
-        /* --- RESTORED: Colorful Animated Title --- */
         header { min-height: 100vh; display: flex; align-items: center; padding: 0 10%; }
         .hero-container { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4rem; }
         
@@ -57,7 +55,6 @@
         }
         @keyframes textFlow { to { background-position: 200% center; } }
 
-        /* --- RESTORED: Skills Grid --- */
         .skills-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
         .pill { background: var(--glass); border: 1px solid var(--glass-border); padding: 8px 16px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; color: #ddd; transition: 0.3s; }
         .pill:hover { border-color: var(--primary); transform: translateY(-3px); background: rgba(139, 92, 246, 0.1); color: #fff; }
@@ -67,22 +64,19 @@
         @keyframes morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 100% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; } }
 
         section { padding: 100px 10%; }
-        h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 2.5rem; text-align: center; letter-spacing: -1px; }
+        h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 2.5rem; text-align: center; }
 
         .card { background: var(--glass); padding: 2.5rem; border-radius: 24px; border: 1px solid var(--glass-border); backdrop-filter: blur(10px); transition: 0.4s; }
-        .card:hover { transform: translateY(-10px); border-color: var(--tertiary); background: rgba(255,255,255,0.05); }
 
-        /* --- FIXED: Software Launcher (No Loop) --- */
         .software-launcher { text-align: center; margin-top: 2rem; }
         .app-btn {
             display: inline-flex; flex-direction: column; align-items: center;
             padding: 40px 60px; background: rgba(255, 255, 255, 0.03);
             border: 2px solid var(--glass-border); border-radius: 30px;
-            text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none; transition: 0.4s;
         }
-        .app-btn:hover { transform: scale(1.05); border-color: var(--primary); box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); background: rgba(139, 92, 246, 0.05); }
-        .app-icon { font-size: 70px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--primary)); }
-        .app-label { color: white; font-weight: 900; font-size: 1.2rem; letter-spacing: 2px; }
+        .app-btn:hover { transform: scale(1.05); border-color: var(--primary); }
+        .app-icon { font-size: 70px; margin-bottom: 15px; }
 
         .btn { padding: 1rem 2.5rem; background: linear-gradient(45deg, var(--primary), var(--tertiary)); color: white; font-weight: 700; border-radius: 12px; text-decoration: none; display: inline-block; transition: 0.3s; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(6, 182, 212, 0.3); }
@@ -100,7 +94,6 @@
             <li><a href="#about">About</a></li>
             <li><a href="#software">Software</a></li>
             <li><a href="#experience">History</a></li>
-            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -120,34 +113,23 @@
                 </div>
 
                 <div style="margin-top: 2.5rem;">
-                    <a href="https://www.linkedin.com/in/asia-bragg" target="_blank" class="btn">Connect on LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/asia-bragg-b062862b4/" target="_blank" class="btn">Connect on LinkedIn</a>
                 </div>
             </div>
             <div class="profile-wrapper">
                 <div class="profile-frame">
-                    <img src="assets/profilepic.jpeg" alt="Asia" class="profile-img" onerror="this.src='https://via.placeholder.com/220/8b5cf6/ffffff?text=AB'">
+                    <img src="assets/profilepic.jpeg" alt="Asia" class="profile-img" onerror="this.src='https://via.placeholder.com/220'">
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="about">
-        <h2>Professional Bio</h2>
-        <div class="card" style="max-width: 900px; margin: 0 auto;">
-            <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-muted);">
-                I am a focused Bachelors of Science in Accounting student at <strong>Rutgers University</strong> (May 2027). My background is built on a "work ethic first" philosophy—whether I'm auditing financial data sets or ensuring 20+ computer labs run smoothly as an <strong>IT Consultant</strong>.
-            </p>
-        </div>
-    </section>
-
     <section id="software">
         <h2>Featured Software</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;">Click to launch the <strong>Audit Lab Simulation</strong> in a new window.</p>
         <div class="software-launcher">
             <a href="audit-lab/index.html" target="_blank" class="app-btn">
                 <div class="app-icon">🛡️</div>
-                <div class="app-label">LAUNCH AUDIT LAB</div>
-                <p style="color: var(--primary); font-size: 0.8rem; margin-top: 10px; font-weight: bold;">[ TAX LOGIC ENGINE V1.0 ]</p>
+                <div class="app-label" style="color: white; font-weight: 900;">LAUNCH AUDIT LAB</div>
             </a>
         </div>
     </section>
@@ -155,25 +137,13 @@
     <section id="experience">
         <h2>Core Experience</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-            <div class="card">
-                <h3 style="color: var(--tertiary); margin-bottom: 0.5rem;">IT Level 1 Consultant</h3>
-                <p style="font-weight: bold; margin-bottom: 1rem;">Rutgers OIT</p>
-                <p style="font-size: 0.95rem; color: var(--text-muted);">Resolving hardware/software issues while maintaining stability for university labs.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Accounting Associate Sim</h3>
-                <p style="font-weight: bold; margin-bottom: 1rem;">Koch Industries</p>
-                <p style="font-size: 0.95rem; color: var(--text-muted);">Analyzing financial data and developing high-level internal memos for leadership.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Admin Assistant Intern</h3>
-                <p style="font-weight: bold; margin-bottom: 1rem;">Aurora's Kitchens</p>
-                <p style="font-size: 0.95rem; color: var(--text-muted);">Managing payroll accuracy, invoice processing, and financial tracking.</p>
-            </div>
+            <div class="card"><h3>IT Consultant</h3><p>Rutgers OIT</p></div>
+            <div class="card"><h3>Accounting Sim</h3><p>Koch Industries</p></div>
+            <div class="card"><h3>Admin Intern</h3><p>Aurora's Kitchens</p></div>
         </div>
     </section>
 
-    <footer style="padding: 60px; text-align: center; color: var(--text-muted); border-top: 1px solid var(--glass-border);">
+    <footer style="padding: 60px; text-align: center; color: var(--text-muted);">
         <p>© 2026 Asia Bragg | Rutgers University Accounting</p>
     </footer>
 
