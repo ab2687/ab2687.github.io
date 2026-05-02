@@ -99,7 +99,6 @@
             max-width: 600px; line-height: 1.6;
         }
 
-        /* --- Smaller Refined Profile Image --- */
         .profile-wrapper {
             flex: 1; display: flex; justify-content: center;
         }
@@ -176,43 +175,38 @@
             background: rgba(255,255,255,0.06);
         }
 
-        /* --- App Launcher Styles --- */
-        .app-launcher-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .app-icon-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            transition: 0.3s;
-            padding: 20px;
+        /* --- App Showcase & Iframe Styles --- */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            margin: 30px auto;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--glass-border);
-            width: 150px;
+            overflow: hidden;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+            background: #000;
         }
 
-        .app-icon-card:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: var(--primary);
-            transform: scale(1.1);
+        iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            display: block;
         }
 
-        .app-icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 0 10px var(--primary));
-        }
-
-        .app-label {
-            color: var(--text-main);
-            font-weight: 700;
+        .btn-fullscreen {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--tertiary);
+            text-decoration: none;
+            font-weight: bold;
             font-size: 0.9rem;
-            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        
+        .btn-fullscreen:hover {
+            text-shadow: 0 0 10px var(--tertiary);
         }
 
         .btn {
@@ -221,6 +215,8 @@
             color: white; font-weight: 700; border-radius: 10px;
             text-decoration: none; display: inline-block;
             transition: 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(6, 182, 212, 0.4); }
@@ -229,6 +225,7 @@
             .hero-container { flex-direction: column-reverse; text-align: center; }
             .profile-frame { width: 160px; height: 160px; }
             nav ul { display: none; }
+            iframe { height: 600px; }
         }
     </style>
 </head>
@@ -284,16 +281,21 @@
         </div>
     </section>
 
-    <section id="software" class="reveal">
-        <h2 style="text-align: center;">Featured Software</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Interactive logic engine for tax and audit simulation.</p>
+    <section id="software" class="reveal" style="text-align: center;">
+        <h2>Interactive Audit Lab 🛡️</h2>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">A custom-built AIS simulation focusing on tax liability and data integrity.</p>
         
-        <div class="app-launcher-container">
-            <a href="https://ab2687.github.io/audit-lab/" target="_blank" class="app-icon-card">
-                <div class="app-icon">🛡️</div>
-                <div class="app-label">AUDIT LAB</div>
-            </a>
+        <div class="iframe-container">
+            <iframe 
+                src="https://ab2687.github.io/audit-lab/" 
+                title="Bragg Tax Shield & Audit Lab"
+                loading="lazy">
+            </iframe>
         </div>
+
+        <a href="https://ab2687.github.io/audit-lab/" target="_blank" class="btn-fullscreen">
+            Launch in Full Screen Window ↗️
+        </a>
     </section>
 
     <section id="experience" class="reveal">
