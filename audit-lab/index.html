@@ -31,11 +31,11 @@
             </div>
             <div>
                 <strong style="color: #ec4899; font-size: 1.1rem; display: block; margin-bottom: 5px;">2. Log Entries:</strong>
-                Select financial events and expenses from the dropdown to audit them.
+                Select financial events or choose "Other" to type your own expenses.
             </div>
             <div>
                 <strong style="color: #06b6d4; font-size: 1.1rem; display: block; margin-bottom: 5px;">3. Track Shields:</strong>
-                Watch the engine dynamically calculate your total deductions and new tax liability.
+                Watch the engine dynamically stack your total deductions and drop your tax liability.
             </div>
             <div>
                 <strong style="color: #10b981; font-size: 1.1rem; display: block; margin-bottom: 5px;">4. Export Ledger:</strong>
@@ -56,12 +56,22 @@
                         <label>Gross Annual Income ($) 💰</label>
                         <input type="number" id="incomeInput" placeholder="e.g. 65000" oninput="recalculate()">
                     </div>
+                    
                     <div class="input-group">
                         <label>Select Financial Event to Audit 🔍</label>
-                        <div class="selector-row">
-                            <select id="itemSelect">
+                        <div class="selector-row" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                            <select id="itemSelect" onchange="toggleCustomInput()" style="flex: 1; min-width: 200px;">
                                 <option value="" disabled selected>Choose an expense...</option>
+                                <option value="software">Software Subscription ($120)</option>
+                                <option value="meal">Client Dinner ($80)</option>
+                                <option value="office">Office Supplies ($45)</option>
+                                <option value="travel">Business Travel ($350)</option>
+                                <option value="other" style="font-weight: bold; color: var(--accent-pink);">➕ Other (Type your own)...</option>
                             </select>
+                            
+                            <input type="text" id="customName" placeholder="What did you buy? (e.g. Flight)" style="display: none; flex: 1; min-width: 150px;">
+                            <input type="number" id="customAmount" placeholder="Amount ($)" style="display: none; width: 120px;">
+                            
                             <button onclick="processEvent()" class="spark-btn">PROCESS ⚡</button>
                         </div>
                     </div>
@@ -69,11 +79,11 @@
                 <div class="stats-display">
                     <div class="stat-box">
                         <span class="stat-label">Total Deductions</span>
-                        <div id="deductionTotal" class="stat-value">$0</div>
+                        <div id="deductionTotal" class="stat-value">$0.00</div>
                     </div>
                     <div class="stat-box highlight">
                         <span class="stat-label">Est. Tax Liability</span>
-                        <div id="taxOwed" class="stat-value">$0</div>
+                        <div id="taxOwed" class="stat-value">$0.00</div>
                     </div>
                 </div>
                 <div id="feedbackBox" class="feedback-container"></div>
@@ -88,6 +98,7 @@
                 </div>
                 <div id="logTerminal" class="terminal-window">
                     <div class="log-entry system-msg">[SYSTEM] Initializing audit protocols...</div>
+                    <div class="log-entry system-msg">[SYSTEM] Ready to process multiple expense streams.</div>
                 </div>
                 <div class="action-footer">
                     <button onclick="exportCSV()" class="export-btn">EXPORT LEDGER (CSV) 📥</button>
