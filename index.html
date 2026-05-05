@@ -82,18 +82,44 @@
         section { padding: 100px 10%; }
         h2 { font-size: 3rem; font-weight: 900; margin-bottom: 3rem; text-align: center; background: linear-gradient(to bottom, #fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* --- Skills & Coursework --- */
-        .skills-container { display: flex; flex-direction: column; gap: 3rem; max-width: 900px; margin: 0 auto; }
-        .skills-group h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-main); }
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-        .pill { 
-            background: var(--glass); border: 1px solid var(--glass-border); 
-            padding: 10px 20px; border-radius: 12px; font-size: 0.95rem; font-weight: 600; 
-            color: #ddd; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        /* --- SKILLS & COURSEWORK LAYOUT --- */
+        .skills-wrapper { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2.5rem; max-width: 1000px; margin: 0 auto; 
         }
-        .pill:hover { border-color: var(--tertiary); transform: translateY(-5px); background: rgba(6, 182, 212, 0.1); color: #fff; box-shadow: 0 5px 15px rgba(6, 182, 212, 0.2); }
+        .skill-card { 
+            background: var(--glass); border: 1px solid var(--glass-border); 
+            padding: 2.5rem; border-radius: 24px; backdrop-filter: blur(10px);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+        .skill-card:hover { 
+            transform: translateY(-5px); border-color: var(--primary); 
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.1); 
+        }
+        .skill-card h3 { 
+            font-size: 1.6rem; margin-bottom: 1.5rem; color: white; 
+            display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 15px;
+        }
+        .skill-icon { font-size: 1.8rem; }
+        .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+        .skill-item { 
+            display: flex; align-items: center; gap: 15px; font-size: 1.05rem; font-weight: 600; 
+            color: #cbd5e1; padding: 12px 18px; background: rgba(255,255,255,0.02); 
+            border-radius: 12px; border-left: 3px solid transparent; transition: all 0.3s ease;
+        }
+        .skill-item::before {
+            content: '▹'; color: var(--secondary); font-weight: 900; font-size: 1.2rem; transition: 0.3s;
+        }
+        .skill-item:hover {
+            background: rgba(139, 92, 246, 0.1); border-left-color: var(--primary);
+            color: #fff; transform: translateX(8px);
+        }
+        .skill-item:hover::before {
+            color: var(--tertiary); transform: scale(1.2) translateX(3px);
+        }
 
-        /* --- Cards (Experience & Clubs) - FUN ANIMATIONS ADDED --- */
+        /* --- Cards (Experience & Clubs) --- */
         .card { 
             background: var(--glass); padding: 2.5rem; border-radius: 24px; 
             border: 2px solid var(--glass-border); backdrop-filter: blur(10px); 
@@ -101,27 +127,21 @@
             position: relative; display: flex; flex-direction: column; height: 100%;
             z-index: 1;
         }
-        
-        /* The magical animated border that appears on hover */
         .card::before {
             content: ""; position: absolute; inset: -2px; border-radius: 26px;
             background: linear-gradient(45deg, #ff007f, #7928ca, #00d4ff, #ff007f);
             background-size: 300% 300%;
             z-index: -1; opacity: 0; transition: opacity 0.5s ease;
         }
-        /* The inner background to block out the middle of the glowing border */
         .card::after {
             content: ""; position: absolute; inset: 0; border-radius: 24px;
             background: var(--bg-color);
             z-index: -1; opacity: 0; transition: opacity 0.5s ease;
         }
-
         .card:hover { 
             transform: translateY(-15px) scale(1.03) rotate(1.5deg); 
             border-color: transparent;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 
-                        0 0 30px rgba(236, 72, 153, 0.4), 
-                        0 0 30px rgba(6, 182, 212, 0.4);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 30px rgba(236, 72, 153, 0.4), 0 0 30px rgba(6, 182, 212, 0.4);
         }
         .card:hover::before, .card:hover::after { opacity: 1; }
         .card:hover::before { animation: moveGradient 3s linear infinite; }
@@ -132,7 +152,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Animated Date Badge inside Cards */
         .date-badge { 
             display: inline-block; padding: 6px 14px; background: rgba(139, 92, 246, 0.15); 
             border: 1px solid var(--primary); color: var(--primary); font-size: 0.8rem; 
@@ -145,7 +164,6 @@
             transform: scale(1.05) rotate(-3deg);
             box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);
         }
-
         .card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; transition: color 0.3s; }
         .card:hover h3 { color: white; }
         .card p.company { font-weight: 700; color: var(--tertiary); margin-bottom: 1rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
@@ -194,8 +212,6 @@
         @media (max-width: 968px) { 
             .hero-container { flex-direction: column-reverse; text-align: center; } 
             nav ul { display: none; } 
-            .skills-group h3 { text-align: center; }
-            .skills-grid { justify-content: center; }
         }
     </style>
 </head>
@@ -236,26 +252,26 @@
 
     <section id="skills">
         <h2 class="reveal">Knowledge Base</h2>
-        <div class="skills-container reveal">
-            <div class="skills-group">
-                <h3>Core Coursework</h3>
-                <div class="skills-grid">
-                    <div class="pill">Intermediate Accounting I & II</div>
-                    <div class="pill">Accounting Info Systems</div>
-                    <div class="pill">Cost Accounting</div>
-                    <div class="pill">Managerial Accounting</div>
-                    <div class="pill">Business Law</div>
-                </div>
+        <div class="skills-wrapper reveal">
+            <div class="skill-card">
+                <h3><span class="skill-icon">📚</span> Core Coursework</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Intermediate Accounting I & II</li>
+                    <li class="skill-item">Accounting Info Systems</li>
+                    <li class="skill-item">Cost Accounting</li>
+                    <li class="skill-item">Managerial Accounting</li>
+                    <li class="skill-item">Business Law</li>
+                </ul>
             </div>
-            <div class="skills-group">
-                <h3>Technical & Analytical Skills</h3>
-                <div class="skills-grid">
-                    <div class="pill">Advanced Excel (Pivot, VLOOKUP)</div>
-                    <div class="pill">IT Troubleshooting</div>
-                    <div class="pill">Hardware Maintenance</div>
-                    <div class="pill">Financial Reporting</div>
-                    <div class="pill">Data Analysis</div>
-                </div>
+            <div class="skill-card" style="transition-delay: 0.1s;">
+                <h3><span class="skill-icon">⚡</span> Technical Skills</h3>
+                <ul class="skill-list">
+                    <li class="skill-item">Advanced Excel (Pivot, VLOOKUP)</li>
+                    <li class="skill-item">IT Troubleshooting & Support</li>
+                    <li class="skill-item">Hardware Maintenance</li>
+                    <li class="skill-item">Financial Reporting</li>
+                    <li class="skill-item">Data Analysis</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -264,7 +280,7 @@
         <h2 class="reveal">Professional Journey</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
             <div class="card reveal">
-                <div class="date-badge">August 2023 - Present</div>
+                <div class="date-badge">August 2025 - Present</div>
                 <h3>IT Level 1 Consultant</h3>
                 <p class="company">Rutgers OIT</p>
                 <p class="desc">Providing critical technical support across 20+ computer labs, ensuring seamless operations for students and faculty while maintaining hardware integrity and resolving network issues.</p>
@@ -276,7 +292,7 @@
                 <p class="desc">Leveraged Market-Based Management to analyze financial data, creating strategic internal memos and optimizing financial reporting processes during a rigorous corporate simulation.</p>
             </div>
             <div class="card reveal" style="transition-delay: 0.2s;">
-                <div class="date-badge">July 2023 - August 2023</div>
+                <div class="date-badge">July 2025 - Sep 2025</div>
                 <h3>Accounts Payable Intern</h3>
                 <p class="company">Aurora's Kitchens</p>
                 <p class="desc">Spearheaded payroll processing and invoice management with 100% accuracy, maintaining rigorous financial documentation and streamlining day-to-day office administrative records.</p>
