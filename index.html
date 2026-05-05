@@ -178,6 +178,7 @@
             text-decoration: none; transition: 0.5s;
             box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
             position: relative; overflow: hidden;
+            margin-bottom: 2rem;
         }
         .app-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transition: 0.5s; }
         .app-btn:hover::before { left: 100%; }
@@ -188,6 +189,71 @@
         }
         .app-icon { font-size: 80px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.2)); }
         .app-label { color: white; font-weight: 900; font-size: 1.4rem; letter-spacing: 3px; }
+        
+        /* --- App Description Section --- */
+        .project-details {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            background: var(--glass);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+        .project-details p.intro {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .project-details h4 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .step-list {
+            list-style: none;
+            counter-reset: custom-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .step-item {
+            position: relative;
+            padding-left: 3.5rem;
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .step-item::before {
+            counter-increment: custom-counter;
+            content: counter(custom-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.2);
+        }
+        .step-item strong {
+            color: var(--tertiary);
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
 
         /* --- Contact Area --- */
         .contact-box {
@@ -324,6 +390,32 @@
                 <div class="app-label">LAUNCH AUDITFLOW</div>
                 <p style="color: var(--secondary); font-weight: bold; margin-top: 15px; font-size: 0.9rem; letter-spacing: 2px;">[ EXPENSE & TAX TRACKER ]</p>
             </a>
+            
+            <div class="project-details">
+                <p class="intro">
+                    <strong>AuditFlow</strong> is a custom-built, client-side web application designed to streamline personal financial tracking. Engineered with HTML, CSS, and vanilla JavaScript, it perfectly demonstrates a technical bridge between core accounting principles and responsive frontend development. It features dynamic state management, real-time mathematical calculations, and gamified user engagement.
+                </p>
+                
+                <h4>How to Use the System:</h4>
+                <ul class="step-list">
+                    <li class="step-item">
+                        <strong>1. Configure Tax Settings</strong>
+                        Launch the app and set your estimated flat tax rate and standard deduction limits based on your personal financial goals.
+                    </li>
+                    <li class="step-item">
+                        <strong>2. Log Transactions</strong>
+                        Input your ongoing income streams and business/personal expenses into the system using the dedicated entry forms.
+                    </li>
+                    <li class="step-item">
+                        <strong>3. Track Dashboard Analytics</strong>
+                        Monitor the dashboard as the application uses JavaScript to instantly calculate your real-time net profit, total expenses, and estimated impending tax liability.
+                    </li>
+                    <li class="step-item">
+                        <strong>4. Search the Audit Trail</strong>
+                        Utilize the built-in search and filter functions to quickly locate specific historical transactions within the digital ledger.
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 
