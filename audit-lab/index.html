@@ -59,20 +59,16 @@
                     
                     <div class="input-group">
                         <label>Select Financial Event to Audit 🔍</label>
-                        <div class="selector-row" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
-                            <select id="itemSelect" onchange="toggleCustomInput()" style="flex: 1; min-width: 200px;">
+                        <div class="selector-row">
+                            <select id="itemSelect" onchange="toggleCustomInput()">
                                 <option value="" disabled selected>Choose an expense...</option>
-                                <option value="software">Software Subscription ($120)</option>
-                                <option value="meal">Client Dinner ($80)</option>
-                                <option value="office">Office Supplies ($45)</option>
-                                <option value="travel">Business Travel ($350)</option>
-                                <option value="other" style="font-weight: bold; color: var(--accent-pink);">➕ Other (Type your own)...</option>
                             </select>
-                            
-                            <input type="text" id="customName" placeholder="What did you buy? (e.g. Flight)" style="display: none; flex: 1; min-width: 150px;">
-                            <input type="number" id="customAmount" placeholder="Amount ($)" style="display: none; width: 120px;">
-                            
                             <button onclick="processEvent()" class="spark-btn">PROCESS ⚡</button>
+                        </div>
+
+                        <div id="customInputContainer" style="display: none; gap: 10px; margin-top: 15px; width: 100%;">
+                            <input type="text" id="customName" placeholder="What did you buy? (e.g. Flight)" style="flex: 2; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white;">
+                            <input type="number" id="customAmount" placeholder="Amount ($)" style="flex: 1; padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white;">
                         </div>
                     </div>
                 </div>
