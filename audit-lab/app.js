@@ -23,34 +23,26 @@ window.onload = async () => {
     }
 };
 
-// 2. Fill the Dropdown (Including the new "Other" option)
+// 2. Safely Fill the Dropdown
 function populateDropdown() {
     const select = document.getElementById('itemSelect');
     
-    // Clear the dropdown first so we don't get duplicates
-    select.innerHTML = '<option value="" disabled selected>Choose an expense...</option>';
+    // We target the hardcoded "Other" option so we can insert JSON items ABOVE it
+    const otherOption = select.querySelector('option[value="other"]');
     
-    // Add items from your JSON file
+    // Add items from your JSON file right before the "Other" option
     library.forEach(item => {
         const option = document.createElement('option');
         option.value = item.id;
         option.innerText = item.name + (item.amount ? ` ($${item.amount})` : '');
-        select.appendChild(option);
+        select.insertBefore(option, otherOption);
     });
-
-    // Add the Custom "Other" Option at the bottom
-    const otherOption = document.createElement('option');
-    otherOption.value = 'other';
-    otherOption.innerText = '➕ Other (Type your own)...';
-    otherOption.style.fontWeight = 'bold';
-    otherOption.style.color = '#ec4899';
-    select.appendChild(otherOption);
 }
 
 // 3. Show/Hide custom inputs when "Other" is selected
 window.toggleCustomInput = function() {
     const select = document.getElementById('itemSelect');
-    const customContainer = document.getElementById('customInputContainer'); // We toggle the whole container now!
+    const customContainer = document.getElementById('customInputContainer'); 
     
     if (select.value === 'other') {
         customContainer.style.display = 'flex';
