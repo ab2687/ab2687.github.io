@@ -4,188 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asia Bragg | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #030712;
-            --primary: #8b5cf6; 
-            --secondary: #ec4899; 
-            --tertiary: #06b6d4; 
-            --text-main: #ffffff;
-            --text-muted: #94a3b8;
-            --glass: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; font-family: 'Plus Jakarta Sans', sans-serif; }
-        h1, h2, h3, .logo, .btn { font-family: 'Outfit', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; min-height: 100vh; }
-
-        /* --- PIZAZZ: Animated Background --- */
-        .gradient-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-            background: radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
-                        radial-gradient(circle at 85% 85%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
-            animation: bgShift 15s infinite alternate ease-in-out;
-        }
-        @keyframes bgShift { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 1.2rem 10%;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(20px); z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        nav .logo { font-weight: 900; font-size: 1.4rem; background: linear-gradient(to right, var(--primary), var(--tertiary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: var(--text-main); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        nav a:hover { color: var(--secondary); text-shadow: 0 0 10px var(--secondary); }
-
-        header { min-height: 100vh; display: flex; align-items: center; padding: 0 10%; }
-        .hero-container { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 4rem; }
-        
-        /* --- PIZAZZ: Shimmering Title --- */
-        .hero-content h1 { 
-            font-size: clamp(3.5rem, 8vw, 5.5rem); 
-            line-height: 1; margin-bottom: 1.5rem; font-weight: 900;
-            background: linear-gradient(to right, #fff 20%, var(--primary), var(--secondary), var(--tertiary));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textFlow 8s linear infinite;
-        }
-        @keyframes textFlow { to { background-position: 200% center; } }
-
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
-        .pill { 
-            background: var(--glass); border: 1px solid var(--glass-border); 
-            padding: 8px 16px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; 
-            color: #ddd; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-        }
-        .pill:hover { border-color: var(--tertiary); transform: translateY(-5px); background: rgba(6, 182, 212, 0.1); color: #fff; box-shadow: 0 5px 15px rgba(6, 182, 212, 0.2); }
-
-        .profile-frame { width: 220px; height: 220px; background: linear-gradient(45deg, var(--primary), var(--tertiary)); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; padding: 5px; animation: morph 7s ease-in-out infinite alternate; box-shadow: 0 0 50px rgba(139, 92, 246, 0.3); }
-        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; background: var(--bg-color); }
-        @keyframes morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 100% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; } }
-
-        section { padding: 100px 10%; }
-        h2 { font-size: 3rem; font-weight: 900; margin-bottom: 3rem; text-align: center; background: linear-gradient(to bottom, #fff, #666); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* --- PIZAZZ: Experience Cards --- */
-        .card { 
-            background: var(--glass); padding: 2.5rem; border-radius: 24px; 
-            border: 1px solid var(--glass-border); backdrop-filter: blur(10px); 
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden;
-        }
-        .card:hover { 
-            transform: translateY(-12px) scale(1.02); 
-            border-color: var(--primary); 
-            background: rgba(255,255,255,0.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(139, 92, 246, 0.1);
-        }
-        .card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .card p.company { font-weight: 700; color: var(--primary); margin-bottom: 1rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-
-        /* --- PIZAZZ: Software Launcher --- */
-        .software-launcher { text-align: center; }
-        .app-btn {
-            display: inline-flex; flex-direction: column; align-items: center;
-            padding: 50px 80px; background: rgba(139, 92, 246, 0.03);
-            border: 2px solid var(--glass-border); border-radius: 40px;
-            text-decoration: none; transition: 0.5s;
-            box-shadow: inset 0 0 20px rgba(255,255,255,0.02);
-        }
-        .app-btn:hover { 
-            transform: scale(1.05); border-color: var(--tertiary); 
-            background: rgba(6, 182, 212, 0.05);
-            box-shadow: 0 0 40px rgba(6, 182, 212, 0.2);
-        }
-        .app-icon { font-size: 80px; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.2)); }
-        .app-label { color: white; font-weight: 900; font-size: 1.4rem; letter-spacing: 3px; }
-
-        .btn { padding: 1.2rem 3rem; background: linear-gradient(45deg, var(--primary), var(--tertiary)); color: white; font-weight: 900; border-radius: 15px; text-decoration: none; display: inline-block; transition: 0.3s; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2); }
-        .btn:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4); }
-
-        @media (max-width: 968px) { .hero-container { flex-direction: column-reverse; text-align: center; } nav ul { display: none; } }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="gradient-bg"></div>
-
-    <nav>
+    <nav class="navbar slide-down">
         <div class="logo">A.BRAGG</div>
-        <ul>
+        <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#software">Software</a></li>
-            <li><a href="#experience">History</a></li>
+            <li><a href="#skills">Skills & Coursework</a></li>
+            <li><a href="#projects">Passion Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <header>
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Asia Bragg</h1>
-                <p style="color: var(--text-muted); font-size: 1.3rem; max-width: 650px; line-height: 1.7;">Rutgers University Accounting student bridging the gap between rigorous financial logic and high-level technical support.</p>
-                
-                <div class="skills-grid">
-                    <div class="pill">Intermediate Accounting I & II</div>
-                    <div class="pill">Accounting Info Systems</div>
-                    <div class="pill">Cost Accounting</div>
-                    <div class="pill">Managerial Accounting</div>
-                    <div class="pill">Advanced Excel</div>
-                    <div class="pill">IT Troubleshooting</div>
-                </div>
-
-                <div style="margin-top: 3rem;">
-                    <a href="https://www.linkedin.com/in/asia-bragg-b062862b4/" target="_blank" class="btn">CONNECT ON LINKEDIN</a>
-                </div>
+    <header id="about" class="hero-section fade-in">
+        <div class="hero-content">
+            <h1>Asia Bragg</h1>
+            <h2>Accounting Student & Technical Problem Solver</h2>
+            <p class="professional-summary">
+                I am a detail-oriented Rutgers University Accounting student bridging the gap between rigorous financial logic and high-level technical support. With a strong foundation in financial principles and a passion for leveraging technology to solve complex problems, I excel in environments that require both analytical thinking and technical acumen. My goal is to apply my unique blend of skills to drive efficiency and accuracy in financial operations.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn primary-btn">Contact Me</a>
+                <a href="https://www.linkedin.com/in/asia-bragg-b062862b4/" target="_blank" class="btn secondary-btn">LinkedIn</a>
             </div>
-            <div class="profile-wrapper">
-                <div class="profile-frame">
-                    <img src="assets/profilepic.jpeg" alt="Asia" class="profile-img" onerror="this.src='https://via.placeholder.com/220/8b5cf6/ffffff?text=AB'">
-                </div>
-            </div>
+        </div>
+        <div class="hero-image slide-up">
+            <img src="assets/profilepic.jpeg" alt="Asia Bragg Portrait">
         </div>
     </header>
 
-    <section id="software">
-        <h2>Featured Systems</h2>
-        <div class="software-launcher">
-            <a href="audit-lab/index.html" target="_blank" class="app-btn">
-                <div class="app-icon">🛡️</div>
-                <div class="app-label">LAUNCH AUDIT LAB</div>
-                <p style="color: var(--tertiary); font-weight: bold; margin-top: 10px; font-size: 0.9rem;">[ SYSTEM STATUS: ACTIVE ]</p>
-            </a>
-        </div>
-    </section>
-
-    <section id="experience">
-        <h2>Professional Journey</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
-            <div class="card">
-                <h3 style="color: var(--tertiary);">IT Level 1 Consultant</h3>
-                <p class="company">Rutgers OIT</p>
-                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">Providing critical technical support across 20+ computer labs, ensuring seamless operations for students and faculty while maintaining hardware integrity.</p>
+    <section id="skills" class="section-container fade-in-scroll">
+        <h2 class="section-title">Skills & Coursework</h2>
+        <div class="skills-grid">
+            <div class="skill-category card hover-lift">
+                <h3>Core Coursework</h3>
+                <ul>
+                    <li>Intermediate Accounting I & II</li>
+                    <li>Accounting Information Systems</li>
+                    <li>Cost Accounting</li>
+                    <li>Managerial Accounting</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3 style="color: var(--primary);">Accounting Associate</h3>
-                <p class="company">Koch Industries (Sim)</p>
-                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">Leveraged Market-Based Management to analyze financial data, creating strategic internal memos and optimizing financial reporting processes.</p>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--secondary);">Admin Assistant</h3>
-                <p class="company">Aurora's Kitchens</p>
-                <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">Spearheaded payroll processing and invoice management with 100% accuracy, maintaining rigorous financial documentation and records.</p>
+            <div class="skill-category card hover-lift">
+                <h3>Technical Skills</h3>
+                <ul>
+                    <li>Advanced Excel (VLOOKUP, Pivot Tables, Macros)</li>
+                    <li>IT Troubleshooting & Support</li>
+                    <li>Financial Data Analysis</li>
+                    <li>HTML/CSS/JavaScript (Frontend Development)</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 80px; text-align: center; color: var(--text-muted); border-top: 1px solid var(--glass-border);">
-        <p style="letter-spacing: 2px; font-weight: 700;">© 2026 ASIA BRAGG | RUTGERS UNIVERSITY</p>
+    <section id="projects" class="section-container bg-light fade-in-scroll">
+        <h2 class="section-title">Passion Project</h2>
+        <div class="project-card card hover-scale">
+            <div class="project-info">
+                <h3>AuditFlow: Expense & Tax Tracker</h3>
+                <p>A client-side web application designed to track income, expenses, and estimate tax liabilities. Built using HTML, CSS, and vanilla JavaScript, featuring dynamic state management, a searchable audit trail, and gamified user engagement.</p>
+                <div class="project-tags">
+                    <span>JavaScript</span>
+                    <span>JSON</span>
+                    <span>CSS Grid</span>
+                </div>
+                <a href="audit-lab/index.html" class="btn primary-btn mt-1">Launch Audit Lab 🛡️</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-container fade-in-scroll">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item card slide-in-left">
+                <div class="timeline-date">Month Year - Present</div>
+                <h3>IT Consultant</h3>
+                <h4>Rutgers OIT</h4>
+                <p>
+                    Provided high-level technical support to students and faculty. Troubleshot complex software and hardware issues, demonstrating strong problem-solving skills and the ability to communicate technical concepts clearly.
+                </p>
+            </div>
+
+            <div class="timeline-item card slide-in-right">
+                <div class="timeline-date">Month Year - Month Year</div>
+                <h3>Accounting Sim Participant</h3>
+                <h4>Koch Industries</h4>
+                <p>
+                    Participated in a rigorous accounting simulation, applying managerial and cost accounting principles to solve real-world business scenarios. Analyzed financial data to recommend strategic decisions.
+                </p>
+            </div>
+
+            <div class="timeline-item card slide-in-left">
+                <div class="timeline-date">Month Year - Month Year</div>
+                <h3>Administrative Intern</h3>
+                <h4>Aurora's Kitchens</h4>
+                <p>
+                    Managed daily administrative tasks, organized financial records, and assisted with bookkeeping operations. Improved organizational efficiency through the implementation of new filing protocols.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="section-container bg-dark fade-in-scroll text-center">
+        <h2 class="section-title text-white">Let's Connect</h2>
+        <p class="text-white mb-2">I'm currently seeking opportunities where I can leverage my accounting knowledge and technical skills.</p>
+        <div class="contact-links">
+            <a href="mailto:your.email@rutgers.edu" class="contact-btn pulse"><i class="fas fa-envelope"></i> Email Me</a>
+            <a href="https://www.linkedin.com/in/asia-bragg-b062862b4/" target="_blank" class="contact-btn pulse"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Asia Bragg | Rutgers University Accounting</p>
     </footer>
 
+    <script>
+        // Simple Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Optional: stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-scroll, .slide-in-left, .slide-in-right').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
