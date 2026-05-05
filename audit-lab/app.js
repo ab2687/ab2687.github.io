@@ -34,7 +34,6 @@ function populateDropdown() {
     library.forEach(item => {
         const option = document.createElement('option');
         option.value = item.id;
-        // If your JSON has amounts, it displays them; otherwise just the name
         option.innerText = item.name + (item.amount ? ` ($${item.amount})` : '');
         select.appendChild(option);
     });
@@ -51,15 +50,12 @@ function populateDropdown() {
 // 3. Show/Hide custom inputs when "Other" is selected
 window.toggleCustomInput = function() {
     const select = document.getElementById('itemSelect');
-    const customName = document.getElementById('customName');
-    const customAmt = document.getElementById('customAmount');
+    const customContainer = document.getElementById('customInputContainer'); // We toggle the whole container now!
     
     if (select.value === 'other') {
-        customName.style.display = 'inline-block';
-        customAmt.style.display = 'inline-block';
+        customContainer.style.display = 'flex';
     } else {
-        customName.style.display = 'none';
-        customAmt.style.display = 'none';
+        customContainer.style.display = 'none';
     }
 }
 
@@ -69,7 +65,7 @@ function smartCategorize(desc) {
     
     if (desc.includes('meal') || desc.includes('food') || desc.includes('lunch') || desc.includes('dinner') || desc.includes('coffee')) {
         return { category: 'Meals & Entertainment', deductibility: 0.5 }; // 50% IRS rule
-    } else if (desc.includes('flight') || desc.includes('uber') || desc.includes('hotel') || desc.includes('travel')) {
+    } else if (desc.includes('flight') || desc.includes('uber') || desc.includes('hotel') || desc.includes('travel') || desc.includes('ticket')) {
         return { category: 'Travel', deductibility: 1.0 }; // 100% deductible
     } else if (desc.includes('laptop') || desc.includes('computer') || desc.includes('equipment')) {
         return { category: 'Equipment', deductibility: 1.0 }; 
@@ -137,7 +133,7 @@ window.processEvent = function() {
 
     // Process Approval/Rejection
     if (isApproved) {
-        totalDeductions += deductibleAmount; // Add to running total!
+        totalDeductions += deductibleAmount; // Add to running total
         addLog(`EVENT: ${expenseName} | STATUS: Approved ✅ | Deductible: $${deductibleAmount.toFixed(2)}`, "log-success");
         if (typeof confetti === 'function') confetti({ particleCount: 150, spread: 70, origin: { y: 0.7 } });
     } else {
