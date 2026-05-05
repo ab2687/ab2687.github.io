@@ -57,11 +57,27 @@
         }
         @keyframes textFlow { to { background-position: 200% center; } }
         
-        .subtitle { color: var(--tertiary); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem; }
-        .summary { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; line-height: 1.8; margin-bottom: 2.5rem; }
+        .subtitle { color: var(--tertiary); font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
+        .summary { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; line-height: 1.8; margin-bottom: 2rem; }
 
-        /* --- Image Frame --- */
-        .profile-frame { width: 280px; height: 280px; background: linear-gradient(45deg, var(--primary), var(--tertiary)); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; padding: 5px; animation: morph 7s ease-in-out infinite alternate; box-shadow: 0 0 50px rgba(139, 92, 246, 0.3); }
+        /* --- Image Frame & Hover Animations --- */
+        .profile-frame { 
+            width: 280px; height: 280px; 
+            background: linear-gradient(45deg, var(--primary), var(--tertiary)); 
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; 
+            padding: 5px; 
+            animation: morph 7s ease-in-out infinite alternate; 
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.3); 
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+            cursor: pointer;
+        }
+        
+        /* New Hover Animation for the Image */
+        .profile-frame:hover {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.8), inset 0 0 20px rgba(236, 72, 153, 0.5);
+        }
+
         .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: inherit; background: var(--bg-color); }
         @keyframes morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 100% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; } }
 
@@ -80,12 +96,12 @@
         }
         .pill:hover { border-color: var(--tertiary); transform: translateY(-5px); background: rgba(6, 182, 212, 0.1); color: #fff; box-shadow: 0 5px 15px rgba(6, 182, 212, 0.2); }
 
-        /* --- Experience Cards --- */
+        /* --- Cards (Experience & Clubs) --- */
         .card { 
             background: var(--glass); padding: 2.5rem; border-radius: 24px; 
             border: 1px solid var(--glass-border); backdrop-filter: blur(10px); 
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden; display: flex; flex-direction: column;
+            position: relative; overflow: hidden; display: flex; flex-direction: column; height: 100%;
         }
         .card:hover { 
             transform: translateY(-12px) scale(1.02); 
@@ -121,10 +137,10 @@
         /* --- Contact Area --- */
         .contact-box {
             background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 30px; padding: 4rem 2rem; text-align: center; max-width: 700px; margin: 0 auto;
+            border-radius: 30px; padding: 4rem 2rem; text-align: center; max-width: 800px; margin: 0 auto;
             backdrop-filter: blur(10px);
         }
-        .contact-box p { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.1rem; }
+        .contact-box p { color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.1rem; line-height: 1.8; }
         .btn-group { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
 
         /* --- Buttons --- */
@@ -141,7 +157,6 @@
         @media (max-width: 968px) { 
             .hero-container { flex-direction: column-reverse; text-align: center; } 
             nav ul { display: none; } 
-            .summary { margin: 0 auto 2.5rem auto; }
             .skills-group h3 { text-align: center; }
             .skills-grid { justify-content: center; }
         }
@@ -154,15 +169,15 @@
     <nav>
         <div class="logo">A.BRAGG</div>
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills & Coursework</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#project">Passion Project</a></li>
+            <li><a href="#clubs">Clubs</a></li>
+            <li><a href="#project">Project</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <header id="about">
+    <header id="top">
         <div class="hero-container reveal">
             <div class="hero-content">
                 <p class="subtitle">Accounting & Tech Specialist</p>
@@ -170,9 +185,8 @@
                 <p class="summary">
                     I am a detail-oriented Rutgers University Accounting student bridging the gap between rigorous financial logic and high-level technical support. With a strong foundation in financial principles and a passion for leveraging technology to solve complex problems, I excel in environments that require both analytical thinking and technical acumen.
                 </p>
-                <div class="btn-group" style="justify-content: flex-start;">
-                    <a href="#contact" class="btn btn-primary">GET IN TOUCH</a>
-                    <a href="https://www.linkedin.com/in/asia-bragg-b062862b4/" target="_blank" class="btn btn-outline">LINKEDIN</a>
+                <div style="margin-top: 1.5rem;">
+                    <a href="Resume - Asia Bragg.docx (1).pdf" target="_blank" class="btn btn-primary">VIEW RESUME</a>
                 </div>
             </div>
             <div class="profile-wrapper">
@@ -225,10 +239,26 @@
                 <p class="desc">Leveraged Market-Based Management to analyze financial data, creating strategic internal memos and optimizing financial reporting processes during a rigorous corporate simulation.</p>
             </div>
             <div class="card reveal" style="transition-delay: 0.2s;">
-                <div class="date-badge">June 2022 - August 2023</div>
-                <h3>Admin Assistant</h3>
+                <div class="date-badge">July 2023 - August 2023</div>
+                <h3>Accounts Payable Intern</h3>
                 <p class="company">Aurora's Kitchens</p>
                 <p class="desc">Spearheaded payroll processing and invoice management with 100% accuracy, maintaining rigorous financial documentation and streamlining day-to-day office administrative records.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="clubs">
+        <h2 class="reveal">Campus Involvement</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+            <div class="card reveal">
+                <h3>Rutgers University Accounting Association</h3>
+                <p class="company">Member</p>
+                <p class="desc">Foster a collaborative environment by connecting members and students. Review and provide materials and resources on the CPA exam. Attend weekly meetings and presentations, gaining insight from active members of the association.</p>
+            </div>
+            <div class="card reveal" style="transition-delay: 0.1s;">
+                <h3>Road to CPA</h3>
+                <p class="company">Member</p>
+                <p class="desc">Actively participating in programming and networking events dedicated to preparing students for the CPA exam and building a successful foundational career in public accounting.</p>
             </div>
         </div>
     </section>
@@ -249,7 +279,7 @@
             <h2 style="margin-bottom: 1rem;">Let's Connect</h2>
             <p>I'm always open to discussing new opportunities, internships, or how I can bring my unique blend of accounting knowledge and technical problem-solving to your team.</p>
             <div class="btn-group">
-                <a href="mailto:your.email@rutgers.edu" class="btn btn-primary">EMAIL ME</a>
+                <a href="mailto:ab2687@scarletmail.rutgers.edu" class="btn btn-primary">EMAIL ME</a>
                 <a href="https://www.linkedin.com/in/asia-bragg-b062862b4/" target="_blank" class="btn btn-outline">CONNECT ON LINKEDIN</a>
             </div>
         </div>
